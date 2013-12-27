@@ -8,7 +8,6 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.codehaus.jackson.JsonFactory;
@@ -35,6 +34,8 @@ public class JavaConnectionManager {
 
 	private Socket socket;
 	private BufferedWriter bufferedWriter;
+
+	private HostConfig hostConfig;
 
 	/**
 	 * Static reference to Jackson's object mapper.
@@ -73,6 +74,7 @@ public class JavaConnectionManager {
 			// TODO throw exception
 			return;
 		}
+		this.hostConfig = config;
 		try {
 			final InetSocketAddress address = new InetSocketAddress(config.mAddress, config.mTcpPort);
 			socket = new Socket();
@@ -88,6 +90,14 @@ public class JavaConnectionManager {
 			disconnect();
 			e.printStackTrace();
 		}
+	}
+
+	public HostConfig getHostConfig() {
+		return hostConfig;
+	}
+
+	public void reconnect() {
+		connect(hostConfig);
 	}
 
 	private void startParsingIncomingMessages() {
