@@ -28,12 +28,6 @@ public class JavaConnectionManager {
 	 * response back into the received one and return the received one.
 	 */
 	private final HashMap<String, CallRequest<?>> mCallRequests = new HashMap<String, CallRequest<?>>();
-	/**
-	 * When posting request data and the service isn't started yet, we need to
-	 * reschedule the post until the service is available. This list contains
-	 * the requests that are to sent upon service startup.
-	 */
-	private final LinkedList<AbstractCall<?>> mPendingCalls = new LinkedList<AbstractCall<?>>();
 
 	private final HashMap<String, AbstractCall<?>> mCalls = new HashMap<String, AbstractCall<?>>();
 

@@ -52,6 +52,10 @@ public class SystemEvent {
 		public int getId() {
 			return ID;
 		}
+		@Override
+		public String getMethod() {
+			return METHOD;
+		}
 	}
 	
 	/**
@@ -70,6 +74,10 @@ public class SystemEvent {
 		@Override
 		public int getId() {
 			return ID;
+		}
+		@Override
+		public String getMethod() {
+			return METHOD;
 		}
 	}
 	
@@ -90,6 +98,10 @@ public class SystemEvent {
 		public int getId() {
 			return ID;
 		}
+		@Override
+		public String getMethod() {
+			return METHOD;
+		}
 	}
 	
 	/**
@@ -108,6 +120,10 @@ public class SystemEvent {
 		@Override
 		public int getId() {
 			return ID;
+		}
+		@Override
+		public String getMethod() {
+			return METHOD;
 		}
 	}
 }

@@ -55,6 +55,10 @@ public class PlayerEvent {
 		public int getId() {
 			return ID;
 		}
+		@Override
+		public String getMethod() {
+			return METHOD;
+		}
 	}
 	
 	/**
@@ -76,6 +80,10 @@ public class PlayerEvent {
 		@Override
 		public int getId() {
 			return ID;
+		}
+		@Override
+		public String getMethod() {
+			return METHOD;
 		}
 	}
 	
@@ -105,6 +113,10 @@ public class PlayerEvent {
 				item = new Item((ObjectNode)node.get("item"));
 			}
 		}
+		@Override
+		public String getMethod() {
+			return METHOD;
+		}
 	}
 	
 	/**
@@ -126,6 +138,10 @@ public class PlayerEvent {
 		@Override
 		public int getId() {
 			return ID;
+		}
+		@Override
+		public String getMethod() {
+			return METHOD;
 		}
 	}
 
@@ -156,6 +172,10 @@ public class PlayerEvent {
 				item = new Item((ObjectNode)node.get("item"));
 				player = new PlayerSeek((ObjectNode)node.get("player"));
 			}
+		}
+		@Override
+		public String getMethod() {
+			return METHOD;
 		}
 	}
 	

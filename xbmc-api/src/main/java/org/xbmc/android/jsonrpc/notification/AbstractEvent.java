@@ -39,6 +39,8 @@ public abstract class AbstractEvent {
 	
 	public abstract int getId();
 	
+	public abstract String getMethod();
+	
 	/**
 	 * Parses the notification type and returns an instance.
 	 * @param node Original notification, as read from API.
