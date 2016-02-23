@@ -95,7 +95,7 @@ public final class System {
 	}
 
 	/**
-	 * Puts the system running XBMC into hibernate mode.
+	 * Puts the system running Kodi into hibernate mode.
 	 * <p/>
 	 * This class represents the API method <tt>System.Hibernate</tt>
 	 * <p/>
@@ -105,7 +105,7 @@ public final class System {
 		public final static String API_TYPE = "System.Hibernate";
 
 		/**
-		 * Puts the system running XBMC into hibernate mode.
+		 * Construct via parcel.
 		 */
 		public Hibernate() {
 			super();
@@ -128,7 +128,7 @@ public final class System {
 	}
 
 	/**
-	 * Reboots the system running XBMC.
+	 * Reboots the system running Kodi.
 	 * <p/>
 	 * This class represents the API method <tt>System.Reboot</tt>
 	 * <p/>
@@ -161,7 +161,7 @@ public final class System {
 	}
 
 	/**
-	 * Shuts the system running XBMC down.
+	 * Shuts the system running Kodi down.
 	 * <p/>
 	 * This class represents the API method <tt>System.Shutdown</tt>
 	 * <p/>
@@ -171,7 +171,7 @@ public final class System {
 		public final static String API_TYPE = "System.Shutdown";
 
 		/**
-		 * Shuts the system running XBMC down.
+		 * Construct via parcel.
 		 */
 		public Shutdown() {
 			super();
@@ -194,7 +194,7 @@ public final class System {
 	}
 
 	/**
-	 * Suspends the system running XBMC.
+	 * Suspends the system running Kodi.
 	 * <p/>
 	 * This class represents the API method <tt>System.Suspend</tt>
 	 * <p/>

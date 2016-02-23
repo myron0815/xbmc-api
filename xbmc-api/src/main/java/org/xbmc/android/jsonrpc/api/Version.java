@@ -45,7 +45,7 @@ public class Version {
 	 */
 	public static Version get() {
 		if (VERSION == null) {
-			VERSION = new Version("72a7730", "2013-10-12 16:48:48 -0700", Branch.MASTER, Type.NIGHTLY);
+			VERSION = new Version("72a7730", "2016-02-21 16:48:48 -0700", Branch.JARVIS, Type.RELEASE);
 		}
 		return VERSION;
 	}
@@ -108,7 +108,7 @@ public class Version {
 	 * @author freezy <freezy@xbmc.org>
 	 */
 	public enum Branch {
-		EDEN, FRODO, MASTER, UNKNOWN;
+		EDEN, FRODO, GOTHAM, HELIX, ISENGARD, JARVIS, KRYPTON, MASTER, UNKNOWN
 	}
 
 	/**

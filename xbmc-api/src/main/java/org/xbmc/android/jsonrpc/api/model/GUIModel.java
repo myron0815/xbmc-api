@@ -46,24 +46,28 @@ public final class GUIModel {
 		public static final String CURRENTWINDOW = "currentwindow";
 		public static final String FULLSCREEN = "fullscreen";
 		public static final String SKIN = "skin";
+		public static final String STEREOSCOPICMODE = "stereoscopicmode";
 
 		// class members
 		public final Currentcontrol currentcontrol;
 		public final Currentwindow currentwindow;
 		public final Boolean fullscreen;
 		public final Skin skin;
+		public final StereoscopyMode stereoscopicmode;
 
 		/**
 		 * @param currentcontrol
 		 * @param currentwindow
 		 * @param fullscreen
 		 * @param skin
+		 * @param stereoscopicmode
 		 */
-		public PropertyValue(Currentcontrol currentcontrol, Currentwindow currentwindow, Boolean fullscreen, Skin skin) {
+		public PropertyValue(Currentcontrol currentcontrol, Currentwindow currentwindow, Boolean fullscreen, Skin skin, StereoscopyMode stereoscopicmode) {
 			this.currentcontrol = currentcontrol;
 			this.currentwindow = currentwindow;
 			this.fullscreen = fullscreen;
 			this.skin = skin;
+			this.stereoscopicmode = stereoscopicmode;
 		}
 
 		/**
@@ -75,6 +79,7 @@ public final class GUIModel {
 			currentwindow = node.has(CURRENTWINDOW) ? new Currentwindow(node.get(CURRENTWINDOW)) : null;
 			fullscreen = parseBoolean(node, FULLSCREEN);
 			skin = node.has(SKIN) ? new Skin(node.get(SKIN)) : null;
+			stereoscopicmode = node.has(STEREOSCOPICMODE) ? new StereoscopyMode(node.get(STEREOSCOPICMODE)) : null;
 		}
 
 		@Override
@@ -84,6 +89,7 @@ public final class GUIModel {
 			node.put(CURRENTWINDOW, currentwindow.toJsonNode());
 			node.put(FULLSCREEN, fullscreen);
 			node.put(SKIN, skin.toJsonNode());
+			node.put(STEREOSCOPICMODE, stereoscopicmode.toJsonNode());
 			return node;
 		}
 
@@ -272,7 +278,85 @@ public final class GUIModel {
 				}
 				return new ArrayList<Currentcontrol>(0);
 			}
+		}
+	}
 
+	/**
+	 * API Name: <tt>GUI.Stereoscopy.Mode</tt>
+	 * <p/>
+	 * Note: This class is used as result only.<br/>
+	 * <i>This class was generated automatically from XBMC's JSON-RPC introspect.</i>
+	 */
+	public static class StereoscopyMode extends AbstractModel {
+		public final static String API_TYPE = "GUI.Stereoscopy.Mode";
+
+		// field names
+		public static final String LABEL = "label";
+		public static final String MODE = "mode";
+
+		// class members
+		public final String label;
+		public final String mode;
+
+		/**
+		 * @param label
+		 * @param mode One of: <tt>off</tt>, <tt>split_vertical</tt>, <tt>split_horizontal</tt>, <tt>row_interleaved</tt>, <tt>hardware_based</tt>, <tt>anaglyph_cyan_red</tt>, <tt>anaglyph_green_magenta</tt>, <tt>anaglyph_yellow_blue</tt>, <tt>monoscopic</tt>. See constants at {@link GUIModel.StereoscopyMode.Mode}.
+		 */
+		public StereoscopyMode(String label, String mode) {
+			this.label = label;
+			this.mode = mode;
+		}
+
+		/**
+		 * Construct from JSON object.
+		 * @param node JSON object representing a StereoscopyMode object
+		 */
+		public StereoscopyMode(JsonNode node) {
+			label = node.get(LABEL).getTextValue(); // required value
+			mode = parseString(node, MODE);
+		}
+
+		@Override
+		public JsonNode toJsonNode() {
+			final ObjectNode node = OM.createObjectNode();
+			node.put(LABEL, label);
+			node.put(MODE, mode); // enum
+			return node;
+		}
+
+		/**
+		 * Extracts a list of {@link StereoscopyMode} objects from a JSON array.
+		 * @param node ObjectNode containing the list of objects.
+		 * @param key Key pointing to the node where the list is stored.
+		 */
+		static List<StereoscopyMode> getGUIModelStereoscopyModeList(JsonNode node, String key) {
+			if (node.has(key)) {
+				final ArrayNode a = (ArrayNode)node.get(key);
+				final List<StereoscopyMode> l = new ArrayList<StereoscopyMode>(a.size());
+				for (int i = 0; i < a.size(); i++) {
+					l.add(new StereoscopyMode((JsonNode)a.get(i)));
+				}
+				return l;
+			}
+			return new ArrayList<StereoscopyMode>(0);
+		}
+
+		/**
+		 * API Name: <tt>mode</tt>
+		 */
+		public interface Mode {
+
+			public final String OFF = "off";
+			public final String SPLIT_VERTICAL = "split_vertical";
+			public final String SPLIT_HORIZONTAL = "split_horizontal";
+			public final String ROW_INTERLEAVED = "row_interleaved";
+			public final String HARDWARE_BASED = "hardware_based";
+			public final String ANAGLYPH_CYAN_RED = "anaglyph_cyan_red";
+			public final String ANAGLYPH_GREEN_MAGENTA = "anaglyph_green_magenta";
+			public final String ANAGLYPH_YELLOW_BLUE = "anaglyph_yellow_blue";
+			public final String MONOSCOPIC = "monoscopic";
+
+			public final static Set<String> values = new HashSet<String>(Arrays.asList(OFF, SPLIT_VERTICAL, SPLIT_HORIZONTAL, ROW_INTERLEAVED, HARDWARE_BASED, ANAGLYPH_CYAN_RED, ANAGLYPH_GREEN_MAGENTA, ANAGLYPH_YELLOW_BLUE, MONOSCOPIC));
 		}
 	}
 
@@ -285,8 +369,9 @@ public final class GUIModel {
 		public final String CURRENTCONTROL = "currentcontrol";
 		public final String SKIN = "skin";
 		public final String FULLSCREEN = "fullscreen";
+		public final String STEREOSCOPICMODE = "stereoscopicmode";
 
-		public final static Set<String> values = new HashSet<String>(Arrays.asList(CURRENTWINDOW, CURRENTCONTROL, SKIN, FULLSCREEN));
+		public final static Set<String> values = new HashSet<String>(Arrays.asList(CURRENTWINDOW, CURRENTCONTROL, SKIN, FULLSCREEN, STEREOSCOPICMODE));
 	}
 
 	/**
@@ -303,10 +388,20 @@ public final class GUIModel {
 		public final String MUSIC = "music";
 		public final String VIDEO = "video";
 		public final String VIDEOS = "videos";
-		public final String TV = "tv";
 		public final String PVR = "pvr";
+		public final String TVCHANNELS = "tvchannels";
+		public final String TVRECORDINGS = "tvrecordings";
+		public final String TVGUIDE = "tvguide";
+		public final String TVTIMERS = "tvtimers";
+		public final String TVSEARCH = "tvsearch";
+		public final String RADIOCHANNELS = "radiochannels";
+		public final String RADIORECORDINGS = "radiorecordings";
+		public final String RADIOGUIDE = "radioguide";
+		public final String RADIOTIMERS = "radiotimers";
+		public final String RADIOSEARCH = "radiosearch";
 		public final String PVRGUIDEINFO = "pvrguideinfo";
 		public final String PVRRECORDINGINFO = "pvrrecordinginfo";
+		public final String PVRRADIORDSINFO = "pvrradiordsinfo";
 		public final String PVRTIMERSETTING = "pvrtimersetting";
 		public final String PVRGROUPMANAGER = "pvrgroupmanager";
 		public final String PVRCHANNELMANAGER = "pvrchannelmanager";
@@ -315,8 +410,6 @@ public final class GUIModel {
 		public final String PVRUPDATEPROGRESS = "pvrupdateprogress";
 		public final String PVROSDCHANNELS = "pvrosdchannels";
 		public final String PVROSDGUIDE = "pvrosdguide";
-		public final String PVROSDDIRECTOR = "pvrosddirector";
-		public final String PVROSDCUTTER = "pvrosdcutter";
 		public final String PVROSDTELETEXT = "pvrosdteletext";
 		public final String SYSTEMINFO = "systeminfo";
 		public final String TESTPATTERN = "testpattern";
@@ -361,6 +454,8 @@ public final class GUIModel {
 		public final String VISUALISATIONPRESETLIST = "visualisationpresetlist";
 		public final String OSDVIDEOSETTINGS = "osdvideosettings";
 		public final String OSDAUDIOSETTINGS = "osdaudiosettings";
+		public final String AUDIODSPMANAGER = "audiodspmanager";
+		public final String OSDAUDIODSPSETTINGS = "osdaudiodspsettings";
 		public final String VIDEOBOOKMARKS = "videobookmarks";
 		public final String FILEBROWSER = "filebrowser";
 		public final String NETWORKSETUP = "networksetup";
@@ -375,10 +470,9 @@ public final class GUIModel {
 		public final String PICTUREINFO = "pictureinfo";
 		public final String ACCESSPOINTS = "accesspoints";
 		public final String FULLSCREENINFO = "fullscreeninfo";
-		public final String KARAOKESELECTOR = "karaokeselector";
-		public final String KARAOKELARGESELECTOR = "karaokelargeselector";
 		public final String SLIDERDIALOG = "sliderdialog";
 		public final String ADDONINFORMATION = "addoninformation";
+		public final String SUBTITLESEARCH = "subtitlesearch";
 		public final String MUSICPLAYLIST = "musicplaylist";
 		public final String MUSICFILES = "musicfiles";
 		public final String MUSICLIBRARY = "musiclibrary";
@@ -391,25 +485,22 @@ public final class GUIModel {
 		public final String TEXTVIEWER = "textviewer";
 		public final String FULLSCREENVIDEO = "fullscreenvideo";
 		public final String FULLSCREENLIVETV = "fullscreenlivetv";
+		public final String FULLSCREENRADIO = "fullscreenradio";
 		public final String VISUALISATION = "visualisation";
 		public final String SLIDESHOW = "slideshow";
-		public final String FILESTACKINGDIALOG = "filestackingdialog";
-		public final String KARAOKE = "karaoke";
 		public final String WEATHER = "weather";
 		public final String SCREENSAVER = "screensaver";
 		public final String VIDEOOSD = "videoosd";
 		public final String VIDEOMENU = "videomenu";
 		public final String VIDEOTIMESEEK = "videotimeseek";
-		public final String MUSICOVERLAY = "musicoverlay";
-		public final String VIDEOOVERLAY = "videooverlay";
 		public final String STARTWINDOW = "startwindow";
 		public final String STARTUP = "startup";
-		public final String PERIPHERALS = "peripherals";
 		public final String PERIPHERALSETTINGS = "peripheralsettings";
 		public final String EXTENDEDPROGRESSDIALOG = "extendedprogressdialog";
 		public final String MEDIAFILTER = "mediafilter";
 		public final String ADDON = "addon";
+		public final String EVENTLOG = "eventlog";
 
-		public final static Set<String> values = new HashSet<String>(Arrays.asList(HOME, PROGRAMS, PICTURES, FILEMANAGER, FILES, SETTINGS, MUSIC, VIDEO, VIDEOS, TV, PVR, PVRGUIDEINFO, PVRRECORDINGINFO, PVRTIMERSETTING, PVRGROUPMANAGER, PVRCHANNELMANAGER, PVRGUIDESEARCH, PVRCHANNELSCAN, PVRUPDATEPROGRESS, PVROSDCHANNELS, PVROSDGUIDE, PVROSDDIRECTOR, PVROSDCUTTER, PVROSDTELETEXT, SYSTEMINFO, TESTPATTERN, SCREENCALIBRATION, GUICALIBRATION, PICTURESSETTINGS, PROGRAMSSETTINGS, WEATHERSETTINGS, MUSICSETTINGS, SYSTEMSETTINGS, VIDEOSSETTINGS, NETWORKSETTINGS, SERVICESETTINGS, APPEARANCESETTINGS, PVRSETTINGS, TVSETTINGS, SCRIPTS, VIDEOFILES, VIDEOLIBRARY, VIDEOPLAYLIST, LOGINSCREEN, PROFILES, SKINSETTINGS, ADDONBROWSER, YESNODIALOG, PROGRESSDIALOG, VIRTUALKEYBOARD, VOLUMEBAR, SUBMENU, FAVOURITES, CONTEXTMENU, INFODIALOG, NUMERICINPUT, GAMEPADINPUT, SHUTDOWNMENU, MUTEBUG, PLAYERCONTROLS, SEEKBAR, MUSICOSD, ADDONSETTINGS, VISUALISATIONSETTINGS, VISUALISATIONPRESETLIST, OSDVIDEOSETTINGS, OSDAUDIOSETTINGS, VIDEOBOOKMARKS, FILEBROWSER, NETWORKSETUP, MEDIASOURCE, PROFILESETTINGS, LOCKSETTINGS, CONTENTSETTINGS, SONGINFORMATION, SMARTPLAYLISTEDITOR, SMARTPLAYLISTRULE, BUSYDIALOG, PICTUREINFO, ACCESSPOINTS, FULLSCREENINFO, KARAOKESELECTOR, KARAOKELARGESELECTOR, SLIDERDIALOG, ADDONINFORMATION, MUSICPLAYLIST, MUSICFILES, MUSICLIBRARY, MUSICPLAYLISTEDITOR, TELETEXT, SELECTDIALOG, MUSICINFORMATION, OKDIALOG, MOVIEINFORMATION, TEXTVIEWER, FULLSCREENVIDEO, FULLSCREENLIVETV, VISUALISATION, SLIDESHOW, FILESTACKINGDIALOG, KARAOKE, WEATHER, SCREENSAVER, VIDEOOSD, VIDEOMENU, VIDEOTIMESEEK, MUSICOVERLAY, VIDEOOVERLAY, STARTWINDOW, STARTUP, PERIPHERALS, PERIPHERALSETTINGS, EXTENDEDPROGRESSDIALOG, MEDIAFILTER, ADDON));
+		public final static Set<String> values = new HashSet<String>(Arrays.asList(HOME, PROGRAMS, PICTURES, FILEMANAGER, FILES, SETTINGS, MUSIC, VIDEO, VIDEOS, PVR, TVCHANNELS, TVRECORDINGS, TVGUIDE, TVTIMERS, TVSEARCH, RADIOCHANNELS, RADIORECORDINGS, RADIOGUIDE, RADIOTIMERS, RADIOSEARCH, PVRGUIDEINFO, PVRRECORDINGINFO, PVRRADIORDSINFO, PVRTIMERSETTING, PVRGROUPMANAGER, PVRCHANNELMANAGER, PVRGUIDESEARCH, PVRCHANNELSCAN, PVRUPDATEPROGRESS, PVROSDCHANNELS, PVROSDGUIDE, PVROSDTELETEXT, SYSTEMINFO, TESTPATTERN, SCREENCALIBRATION, GUICALIBRATION, PICTURESSETTINGS, PROGRAMSSETTINGS, WEATHERSETTINGS, MUSICSETTINGS, SYSTEMSETTINGS, VIDEOSSETTINGS, NETWORKSETTINGS, SERVICESETTINGS, APPEARANCESETTINGS, PVRSETTINGS, TVSETTINGS, SCRIPTS, VIDEOFILES, VIDEOLIBRARY, VIDEOPLAYLIST, LOGINSCREEN, PROFILES, SKINSETTINGS, ADDONBROWSER, YESNODIALOG, PROGRESSDIALOG, VIRTUALKEYBOARD, VOLUMEBAR, SUBMENU, FAVOURITES, CONTEXTMENU, INFODIALOG, NUMERICINPUT, GAMEPADINPUT, SHUTDOWNMENU, MUTEBUG, PLAYERCONTROLS, SEEKBAR, MUSICOSD, ADDONSETTINGS, VISUALISATIONSETTINGS, VISUALISATIONPRESETLIST, OSDVIDEOSETTINGS, OSDAUDIOSETTINGS, AUDIODSPMANAGER, OSDAUDIODSPSETTINGS, VIDEOBOOKMARKS, FILEBROWSER, NETWORKSETUP, MEDIASOURCE, PROFILESETTINGS, LOCKSETTINGS, CONTENTSETTINGS, SONGINFORMATION, SMARTPLAYLISTEDITOR, SMARTPLAYLISTRULE, BUSYDIALOG, PICTUREINFO, ACCESSPOINTS, FULLSCREENINFO, SLIDERDIALOG, ADDONINFORMATION, SUBTITLESEARCH, MUSICPLAYLIST, MUSICFILES, MUSICLIBRARY, MUSICPLAYLISTEDITOR, TELETEXT, SELECTDIALOG, MUSICINFORMATION, OKDIALOG, MOVIEINFORMATION, TEXTVIEWER, FULLSCREENVIDEO, FULLSCREENLIVETV, FULLSCREENRADIO, VISUALISATION, SLIDESHOW, WEATHER, SCREENSAVER, VIDEOOSD, VIDEOMENU, VIDEOTIMESEEK, STARTWINDOW, STARTUP, PERIPHERALSETTINGS, EXTENDEDPROGRESSDIALOG, MEDIAFILTER, ADDON, EVENTLOG));
 	}
 }

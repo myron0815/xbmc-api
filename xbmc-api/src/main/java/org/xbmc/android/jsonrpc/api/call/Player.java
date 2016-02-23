@@ -29,7 +29,9 @@ import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.node.ArrayNode;
 import org.codehaus.jackson.node.BooleanNode;
 import org.codehaus.jackson.node.DoubleNode;
+import org.codehaus.jackson.node.IntNode;
 import org.codehaus.jackson.node.ObjectNode;
+import org.codehaus.jackson.node.TextNode;
 import org.xbmc.android.jsonrpc.api.AbstractCall;
 import org.xbmc.android.jsonrpc.api.AbstractModel;
 import org.xbmc.android.jsonrpc.api.model.GlobalModel;
@@ -166,7 +168,7 @@ public final class Player {
 		/**
 		 * Retrieves the currently played item.
 		 * @param playerid 
-		 * @param properties  One or more of: <tt>title</tt>, <tt>artist</tt>, <tt>albumartist</tt>, <tt>genre</tt>, <tt>year</tt>, <tt>rating</tt>, <tt>album</tt>, <tt>track</tt>, <tt>duration</tt>, <tt>comment</tt>, <tt>lyrics</tt>, <tt>musicbrainztrackid</tt>, <tt>musicbrainzartistid</tt>, <tt>musicbrainzalbumid</tt>, <tt>musicbrainzalbumartistid</tt>, <tt>playcount</tt>, <tt>fanart</tt>, <tt>director</tt>, <tt>trailer</tt>, <tt>tagline</tt>, <tt>plot</tt>, <tt>plotoutline</tt>, <tt>originaltitle</tt>, <tt>lastplayed</tt>, <tt>writer</tt>, <tt>studio</tt>, <tt>mpaa</tt>, <tt>cast</tt>, <tt>country</tt>, <tt>imdbnumber</tt>, <tt>premiered</tt>, <tt>productioncode</tt>, <tt>runtime</tt>, <tt>set</tt>, <tt>showlink</tt>, <tt>streamdetails</tt>, <tt>top250</tt>, <tt>votes</tt>, <tt>firstaired</tt>, <tt>season</tt>, <tt>episode</tt>, <tt>showtitle</tt>, <tt>thumbnail</tt>, <tt>file</tt>, <tt>resume</tt>, <tt>artistid</tt>, <tt>albumid</tt>, <tt>tvshowid</tt>, <tt>setid</tt>, <tt>watchedepisodes</tt>, <tt>disc</tt>, <tt>tag</tt>, <tt>art</tt>, <tt>genreid</tt>, <tt>displayartist</tt>, <tt>albumartistid</tt>, <tt>description</tt>, <tt>theme</tt>, <tt>mood</tt>, <tt>style</tt>, <tt>albumlabel</tt>, <tt>sorttitle</tt>, <tt>episodeguide</tt>, <tt>uniqueid</tt>, <tt>dateadded</tt>, <tt>channel</tt>, <tt>channeltype</tt>, <tt>hidden</tt>, <tt>locked</tt>, <tt>channelnumber</tt>, <tt>starttime</tt>, <tt>endtime</tt>. See constants at {@link ListModel.AllFields}.
+		 * @param properties  One or more of: <tt>title</tt>, <tt>artist</tt>, <tt>albumartist</tt>, <tt>genre</tt>, <tt>year</tt>, <tt>rating</tt>, <tt>album</tt>, <tt>track</tt>, <tt>duration</tt>, <tt>comment</tt>, <tt>lyrics</tt>, <tt>musicbrainztrackid</tt>, <tt>musicbrainzartistid</tt>, <tt>musicbrainzalbumid</tt>, <tt>musicbrainzalbumartistid</tt>, <tt>playcount</tt>, <tt>fanart</tt>, <tt>director</tt>, <tt>trailer</tt>, <tt>tagline</tt>, <tt>plot</tt>, <tt>plotoutline</tt>, <tt>originaltitle</tt>, <tt>lastplayed</tt>, <tt>writer</tt>, <tt>studio</tt>, <tt>mpaa</tt>, <tt>cast</tt>, <tt>country</tt>, <tt>imdbnumber</tt>, <tt>premiered</tt>, <tt>productioncode</tt>, <tt>runtime</tt>, <tt>set</tt>, <tt>showlink</tt>, <tt>streamdetails</tt>, <tt>top250</tt>, <tt>votes</tt>, <tt>firstaired</tt>, <tt>season</tt>, <tt>episode</tt>, <tt>showtitle</tt>, <tt>thumbnail</tt>, <tt>file</tt>, <tt>resume</tt>, <tt>artistid</tt>, <tt>albumid</tt>, <tt>tvshowid</tt>, <tt>setid</tt>, <tt>watchedepisodes</tt>, <tt>disc</tt>, <tt>tag</tt>, <tt>art</tt>, <tt>genreid</tt>, <tt>displayartist</tt>, <tt>albumartistid</tt>, <tt>description</tt>, <tt>theme</tt>, <tt>mood</tt>, <tt>style</tt>, <tt>albumlabel</tt>, <tt>sorttitle</tt>, <tt>episodeguide</tt>, <tt>uniqueid</tt>, <tt>dateadded</tt>, <tt>channel</tt>, <tt>channeltype</tt>, <tt>hidden</tt>, <tt>locked</tt>, <tt>channelnumber</tt>, <tt>starttime</tt>, <tt>endtime</tt>, <tt>specialsortseason</tt>, <tt>specialsortepisode</tt>, <tt>compilation</tt>, <tt>releasetype</tt>, <tt>albumreleasetype</tt>. See constants at {@link ListModel.AllFields}.
 		 */
 		public GetItem(Integer playerid, String... properties) {
 			super();
@@ -187,6 +189,151 @@ public final class Player {
 		@Override
 		protected boolean returnsList() {
 			return false;
+		}
+	}
+
+	/**
+	 * Get a list of available players.
+	 * <p/>
+	 * This class represents the API method <tt>Player.GetPlayers</tt>
+	 * <p/>
+	 * <i>This class was generated automatically from XBMC's JSON-RPC introspect.</i>
+	 */
+	public static class GetPlayers extends AbstractCall<GetPlayers.GetPlayersResult> {
+		public final static String API_TYPE = "Player.GetPlayers";
+
+		/**
+		 * Get a list of available players.
+		 * @param media  One of: <tt>all</tt>, <tt>video</tt>, <tt>audio</tt>. See constants at {@link Player.GetPlayers.Media}.
+		 */
+		public GetPlayers(String media) {
+			super();
+			addParameter("media", media);
+		}
+
+		@Override
+		protected ArrayList<GetPlayersResult> parseMany(JsonNode node) {
+			final ArrayNode results = (ArrayNode) node;
+			if (results != null) {
+				final ArrayList<GetPlayersResult> ret = new ArrayList<GetPlayersResult>(results.size());
+				for (int i = 0; i < results.size(); i++) {
+					final ObjectNode item = (ObjectNode)results.get(i);
+					ret.add(new GetPlayersResult(item));
+				}
+				return ret;
+			} else {
+				return new ArrayList<GetPlayersResult>(0);
+			}
+		}
+
+		@Override
+		public String getName() {
+			return API_TYPE;
+		}
+
+		@Override
+		protected boolean returnsList() {
+			return true;
+		}
+
+		/**
+		 * Note: This class is used as result only.<br/>
+		 * <i>This class was generated automatically from XBMC's JSON-RPC introspect.</i>
+		 */
+		public static class GetPlayersResult extends AbstractModel {
+
+			// field names
+			public static final String NAME = "name";
+			public static final String PLAYERCOREID = "playercoreid";
+			public static final String PLAYSAUDIO = "playsaudio";
+			public static final String PLAYSVIDEO = "playsvideo";
+			public static final String TYPE = "type";
+
+			// class members
+			public final String name;
+			public final Integer playercoreid;
+			public final Boolean playsaudio;
+			public final Boolean playsvideo;
+			public final String type;
+
+			/**
+			 * @param name
+			 * @param playercoreid
+			 * @param playsaudio
+			 * @param playsvideo
+			 * @param type One of: <tt>internal</tt>, <tt>external</tt>, <tt>remote</tt>. See constants at {@link Player.GetPlayersResult.Type}.
+			 */
+			public GetPlayersResult(String name, Integer playercoreid, Boolean playsaudio, Boolean playsvideo, String type) {
+				this.name = name;
+				this.playercoreid = playercoreid;
+				this.playsaudio = playsaudio;
+				this.playsvideo = playsvideo;
+				this.type = type;
+			}
+
+			/**
+			 * Construct from JSON object.
+			 * @param node JSON object representing a GetPlayersResult object
+			 */
+			public GetPlayersResult(JsonNode node) {
+				name = parseString(node, NAME);
+				playercoreid = node.get(PLAYERCOREID).getIntValue(); // required value
+				playsaudio = node.get(PLAYSAUDIO).getBooleanValue(); // required value
+				playsvideo = node.get(PLAYSVIDEO).getBooleanValue(); // required value
+				type = parseString(node, TYPE);
+			}
+
+			@Override
+			public JsonNode toJsonNode() {
+				final ObjectNode node = OM.createObjectNode();
+				node.put(NAME, name);
+				node.put(PLAYERCOREID, playercoreid);
+				node.put(PLAYSAUDIO, playsaudio);
+				node.put(PLAYSVIDEO, playsvideo);
+				node.put(TYPE, type); // enum
+				return node;
+			}
+
+			/**
+			 * Extracts a list of {@link GetPlayersResult} objects from a JSON array.
+			 * @param node ObjectNode containing the list of objects.
+			 * @param key Key pointing to the node where the list is stored.
+			 */
+			static List<GetPlayersResult> getPlayerGetPlayersResultList(JsonNode node, String key) {
+				if (node.has(key)) {
+					final ArrayNode a = (ArrayNode)node.get(key);
+					final List<GetPlayersResult> l = new ArrayList<GetPlayersResult>(a.size());
+					for (int i = 0; i < a.size(); i++) {
+						l.add(new GetPlayersResult((JsonNode)a.get(i)));
+					}
+					return l;
+				}
+				return new ArrayList<GetPlayersResult>(0);
+			}
+
+			/**
+			 * API Name: <tt>type</tt>
+			 */
+			public interface Type {
+
+				public final String INTERNAL = "internal";
+				public final String EXTERNAL = "external";
+				public final String REMOTE = "remote";
+
+				public final static Set<String> values = new HashSet<String>(Arrays.asList(INTERNAL, EXTERNAL, REMOTE));
+			}
+		}
+
+		/**
+		 * API Name: <tt>media</tt>
+		 */
+		public interface Media {
+
+			public final String ALL = "all";
+			public final String VIDEO = "video";
+			public final String AUDIO = "audio";
+
+			public final static Set<String> values = new HashSet<String>(Arrays.asList(ALL, VIDEO, AUDIO));
 		}
 	}
 
@@ -403,6 +550,17 @@ public final class Player {
 
 		/**
 		 * Start playback of either the playlist with the given ID, a slideshow with the pictures from the given directory or a single file or an item from the database.
+		 * @param item 
+		 * @param options 
+		 */
+		public Open(ItemRecordingId item, Option options) {
+			super();
+			addParameter("item", item);
+			addParameter("options", options);
+		}
+
+		/**
+		 * Start playback of either the playlist with the given ID, a slideshow with the pictures from the given directory or a single file or an item from the database.
 		 */
 		public Open() {
 			super();
@@ -449,6 +607,15 @@ public final class Player {
 		 * @param item 
 		 */
 		public Open(ItemChannelId item) {
+			super();
+			addParameter("item", item);
+		}
+
+		/**
+		 * Start playback of either the playlist with the given ID, a slideshow with the pictures from the given directory or a single file or an item from the database.
+		 * @param item 
+		 */
+		public Open(ItemRecordingId item) {
 			super();
 			addParameter("item", item);
 		}
@@ -599,24 +766,55 @@ public final class Player {
 		 * Note: This class is used as parameter only.<br/>
 		 * <i>This class was generated automatically from XBMC's JSON-RPC introspect.</i>
 		 */
+		public static class ItemRecordingId extends AbstractModel {
+
+			// field names
+			public static final String RECORDINGID = "recordingid";
+
+			// class members
+			public final Integer recordingid;
+
+			/**
+			 * @param recordingid
+			 */
+			public ItemRecordingId(Integer recordingid) {
+				this.recordingid = recordingid;
+			}
+
+			@Override
+			public JsonNode toJsonNode() {
+				final ObjectNode node = OM.createObjectNode();
+				node.put(RECORDINGID, recordingid);
+				return node;
+			}
+		}
+
+		/**
+		 * Note: This class is used as parameter only.<br/>
+		 * <i>This class was generated automatically from XBMC's JSON-RPC introspect.</i>
+		 */
 		public static class Option extends AbstractModel {
 
 			// field names
+			public static final String PLAYERCOREID = "playercoreid";
 			public static final String REPEAT = "repeat";
 			public static final String RESUME = "resume";
 			public static final String SHUFFLED = "shuffled";
 
 			// class members
+			public final Playercoreid playercoreid;
 			public final String repeat;
 			public final Resume resume;
 			public final Boolean shuffled;
 
 			/**
+			 * @param playercoreid
 			 * @param repeat One of: <tt>off</tt>, <tt>one</tt>, <tt>all</tt>. See constants at {@link PlayerModel.Repeat}.
 			 * @param resume
 			 * @param shuffled
 			 */
-			public Option(String repeat, Resume resume, Boolean shuffled) {
+			public Option(Playercoreid playercoreid, String repeat, Resume resume, Boolean shuffled) {
+				this.playercoreid = playercoreid;
 				this.repeat = repeat;
 				this.resume = resume;
 				this.shuffled = shuffled;
@@ -625,6 +823,7 @@ public final class Player {
 			@Override
 			public JsonNode toJsonNode() {
 				final ObjectNode node = OM.createObjectNode();
+				node.put(PLAYERCOREID, playercoreid.toJsonNode());
 				node.put(REPEAT, repeat); // enum
 				node.put(RESUME, resume.toJsonNode());
 				node.put(SHUFFLED, shuffled);
@@ -681,6 +880,54 @@ public final class Player {
 						return positionTime.toJsonNode();
 					}
 					return null; // this is completely excluded. theoretically.
+				}
+			}
+
+			/**
+			 * Note: This class is used as parameter only.<br/>
+			 * <i>This class was generated automatically from XBMC's JSON-RPC introspect.</i>
+			 */
+			public static class Playercoreid extends AbstractModel {
+
+				// class members
+				public final Integer integerArg;
+				public final String stringArg;
+
+				/**
+				 * @param integerArg
+				 */
+				public Playercoreid(Integer integerArg) {
+					this.integerArg = integerArg;
+					this.stringArg = null;
+				}
+
+				/**
+				 * @param stringArg One of: <tt>default</tt>. See constants at {@link Player.Playercoreid.StringArg}.
+				 */
+				public Playercoreid(String stringArg) {
+					this.stringArg = stringArg;
+					this.integerArg = null;
+				}
+
+				@Override
+				public JsonNode toJsonNode() {
+					if (integerArg != null) {
+						return new IntNode(integerArg);
+					}
+					if (stringArg != null) {
+						return new TextNode(stringArg); // 3num
+					}
+					return null; // this is completely excluded. theoretically.
+				}
+
+				/**
+				 * API Name: <tt>stringArg</tt>
+				 */
+				public interface StringArg {
+
+					public final String DEFAULT = "default";
+
+					public final static Set<String> values = new HashSet<String>(Arrays.asList(DEFAULT));
 				}
 			}
 		}
@@ -832,6 +1079,50 @@ public final class Player {
 			addParameter("value", value);
 		}
 
+		/**
+		 * Seek through the playing item.
+		 * @param playerid 
+		 * @param value 
+		 */
+		public Seek(Integer playerid, ValuePercentage value) {
+			super();
+			addParameter("playerid", playerid);
+			addParameter("value", value);
+		}
+
+		/**
+		 * Seek through the playing item.
+		 * @param playerid 
+		 * @param value 
+		 */
+		public Seek(Integer playerid, ValueTime value) {
+			super();
+			addParameter("playerid", playerid);
+			addParameter("value", value);
+		}
+
+		/**
+		 * Seek through the playing item.
+		 * @param playerid 
+		 * @param value 
+		 */
+		public Seek(Integer playerid, ValueStep value) {
+			super();
+			addParameter("playerid", playerid);
+			addParameter("value", value);
+		}
+
+		/**
+		 * Seek through the playing item.
+		 * @param playerid 
+		 * @param value 
+		 */
+		public Seek(Integer playerid, ValueSecond value) {
+			super();
+			addParameter("playerid", playerid);
+			addParameter("value", value);
+		}
+
 		@Override
 		protected SeekResult parseOne(JsonNode node) {
 			return new SeekResult(node);
@@ -845,6 +1136,127 @@ public final class Player {
 		@Override
 		protected boolean returnsList() {
 			return false;
+		}
+
+		/**
+		 * Note: This class is used as parameter only.<br/>
+		 * <i>This class was generated automatically from XBMC's JSON-RPC introspect.</i>
+		 */
+		public static class ValuePercentage extends AbstractModel {
+
+			// field names
+			public static final String PERCENTAGE = "percentage";
+
+			// class members
+			public final Double percentage;
+
+			/**
+			 * @param percentage
+			 */
+			public ValuePercentage(Double percentage) {
+				this.percentage = percentage;
+			}
+
+			@Override
+			public JsonNode toJsonNode() {
+				final ObjectNode node = OM.createObjectNode();
+				node.put(PERCENTAGE, percentage);
+				return node;
+			}
+		}
+
+		/**
+		 * Note: This class is used as parameter only.<br/>
+		 * <i>This class was generated automatically from XBMC's JSON-RPC introspect.</i>
+		 */
+		public static class ValueTime extends AbstractModel {
+
+			// field names
+			public static final String TIME = "time";
+
+			// class members
+			public final PlayerModel.PositionTime time;
+
+			/**
+			 * @param time
+			 */
+			public ValueTime(PlayerModel.PositionTime time) {
+				this.time = time;
+			}
+
+			@Override
+			public JsonNode toJsonNode() {
+				final ObjectNode node = OM.createObjectNode();
+				node.put(TIME, time.toJsonNode());
+				return node;
+			}
+		}
+
+		/**
+		 * Note: This class is used as parameter only.<br/>
+		 * <i>This class was generated automatically from XBMC's JSON-RPC introspect.</i>
+		 */
+		public static class ValueStep extends AbstractModel {
+
+			// field names
+			public static final String STEP = "step";
+
+			// class members
+			public final String step;
+
+			/**
+			 * @param step One of: <tt>smallforward</tt>, <tt>smallbackward</tt>, <tt>bigforward</tt>, <tt>bigbackward</tt>. See constants at {@link Player.ValueStep.Step}.
+			 */
+			public ValueStep(String step) {
+				this.step = step;
+			}
+
+			@Override
+			public JsonNode toJsonNode() {
+				final ObjectNode node = OM.createObjectNode();
+				node.put(STEP, step); // enum
+				return node;
+			}
+
+			/**
+			 * API Name: <tt>step</tt>
+			 */
+			public interface Step {
+
+				public final String SMALLFORWARD = "smallforward";
+				public final String SMALLBACKWARD = "smallbackward";
+				public final String BIGFORWARD = "bigforward";
+				public final String BIGBACKWARD = "bigbackward";
+
+				public final static Set<String> values = new HashSet<String>(Arrays.asList(SMALLFORWARD, SMALLBACKWARD, BIGFORWARD, BIGBACKWARD));
+			}
+		}
+
+		/**
+		 * Note: This class is used as parameter only.<br/>
+		 * <i>This class was generated automatically from XBMC's JSON-RPC introspect.</i>
+		 */
+		public static class ValueSecond extends AbstractModel {
+
+			// field names
+			public static final String SECONDS = "seconds";
+
+			// class members
+			public final Integer seconds;
+
+			/**
+			 * @param seconds
+			 */
+			public ValueSecond(Integer seconds) {
+				this.seconds = seconds;
+			}
+
+			@Override
+			public JsonNode toJsonNode() {
+				final ObjectNode node = OM.createObjectNode();
+				node.put(SECONDS, seconds);
+				return node;
+			}
 		}
 
 		/**

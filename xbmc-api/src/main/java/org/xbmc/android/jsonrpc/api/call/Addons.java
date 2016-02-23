@@ -75,6 +75,19 @@ public final class Addons {
 		/**
 		 * Executes the given addon with the given parameters (if possible).
 		 * @param addonid 
+		 * @param params URL path (must start with / or ?.
+		 * @param wait 
+		 */
+		public ExecuteAddon(String addonid, String params, Boolean wait) {
+			super();
+			addParameter("addonid", addonid);
+			addParameter("params", params);
+			addParameter("wait", wait);
+		}
+
+		/**
+		 * Executes the given addon with the given parameters (if possible).
+		 * @param addonid 
 		 */
 		public ExecuteAddon(String addonid) {
 			super();
@@ -109,6 +122,17 @@ public final class Addons {
 		 * @param params 
 		 */
 		public ExecuteAddon(String addonid, String... params) {
+			super();
+			addParameter("addonid", addonid);
+			addParameter("params", params);
+		}
+
+		/**
+		 * Executes the given addon with the given parameters (if possible).
+		 * @param addonid 
+		 * @param params URL path (must start with / or ?.
+		 */
+		public ExecuteAddon(String addonid, String params) {
 			super();
 			addParameter("addonid", addonid);
 			addParameter("params", params);
@@ -209,7 +233,7 @@ public final class Addons {
 
 		/**
 		 * Gets all available addons.
-		 * @param type  One of: <tt>unknown</tt>, <tt>xbmc.metadata.scraper.albums</tt>, <tt>xbmc.metadata.scraper.artists</tt>, <tt>xbmc.metadata.scraper.movies</tt>, <tt>xbmc.metadata.scraper.musicvideos</tt>, <tt>xbmc.metadata.scraper.tvshows</tt>, <tt>xbmc.ui.screensaver</tt>, <tt>xbmc.player.musicviz</tt>, <tt>xbmc.python.pluginsource</tt>, <tt>xbmc.python.script</tt>, <tt>xbmc.python.weather</tt>, <tt>xbmc.python.subtitles</tt>, <tt>xbmc.python.lyrics</tt>, <tt>xbmc.gui.skin</tt>, <tt>xbmc.gui.webinterface</tt>, <tt>xbmc.pvrclient</tt>, <tt>xbmc.addon.video</tt>, <tt>xbmc.addon.audio</tt>, <tt>xbmc.addon.image</tt>, <tt>xbmc.addon.executable</tt>, <tt>xbmc.service</tt>. See constants at {@link AddonModel.Types}.
+		 * @param type  One of: <tt>unknown</tt>, <tt>xbmc.player.musicviz</tt>, <tt>xbmc.gui.skin</tt>, <tt>xbmc.pvrclient</tt>, <tt>kodi.adsp</tt>, <tt>xbmc.python.script</tt>, <tt>xbmc.python.weather</tt>, <tt>xbmc.subtitle.module</tt>, <tt>xbmc.python.lyrics</tt>, <tt>xbmc.metadata.scraper.albums</tt>, <tt>xbmc.metadata.scraper.artists</tt>, <tt>xbmc.metadata.scraper.movies</tt>, <tt>xbmc.metadata.scraper.musicvideos</tt>, <tt>xbmc.metadata.scraper.tvshows</tt>, <tt>xbmc.ui.screensaver</tt>, <tt>xbmc.python.pluginsource</tt>, <tt>xbmc.addon.repository</tt>, <tt>xbmc.webinterface</tt>, <tt>xbmc.service</tt>, <tt>xbmc.audioencoder</tt>, <tt>kodi.context.item</tt>, <tt>kodi.audiodecoder</tt>, <tt>kodi.resource.images</tt>, <tt>kodi.resource.language</tt>, <tt>kodi.resource.uisounds</tt>, <tt>xbmc.addon.video</tt>, <tt>xbmc.addon.audio</tt>, <tt>xbmc.addon.image</tt>, <tt>xbmc.addon.executable</tt>, <tt>visualization-library</tt>, <tt>xbmc.metadata.scraper.library</tt>, <tt>xbmc.python.library</tt>, <tt>xbmc.python.module</tt>. See constants at {@link AddonModel.Types}.
 		 * @param properties  One or more of: <tt>name</tt>, <tt>version</tt>, <tt>summary</tt>, <tt>description</tt>, <tt>path</tt>, <tt>author</tt>, <tt>thumbnail</tt>, <tt>disclaimer</tt>, <tt>fanart</tt>, <tt>dependencies</tt>, <tt>broken</tt>, <tt>extrainfo</tt>, <tt>rating</tt>, <tt>enabled</tt>. See constants at {@link AddonModel.Fields}.
 		 */
 		public GetAddons(String type, String... properties) {
@@ -220,7 +244,7 @@ public final class Addons {
 
 		/**
 		 * Gets all available addons.
-		 * @param type  One of: <tt>unknown</tt>, <tt>xbmc.metadata.scraper.albums</tt>, <tt>xbmc.metadata.scraper.artists</tt>, <tt>xbmc.metadata.scraper.movies</tt>, <tt>xbmc.metadata.scraper.musicvideos</tt>, <tt>xbmc.metadata.scraper.tvshows</tt>, <tt>xbmc.ui.screensaver</tt>, <tt>xbmc.player.musicviz</tt>, <tt>xbmc.python.pluginsource</tt>, <tt>xbmc.python.script</tt>, <tt>xbmc.python.weather</tt>, <tt>xbmc.python.subtitles</tt>, <tt>xbmc.python.lyrics</tt>, <tt>xbmc.gui.skin</tt>, <tt>xbmc.gui.webinterface</tt>, <tt>xbmc.pvrclient</tt>, <tt>xbmc.addon.video</tt>, <tt>xbmc.addon.audio</tt>, <tt>xbmc.addon.image</tt>, <tt>xbmc.addon.executable</tt>, <tt>xbmc.service</tt>. See constants at {@link AddonModel.Types}.
+		 * @param type  One of: <tt>unknown</tt>, <tt>xbmc.player.musicviz</tt>, <tt>xbmc.gui.skin</tt>, <tt>xbmc.pvrclient</tt>, <tt>kodi.adsp</tt>, <tt>xbmc.python.script</tt>, <tt>xbmc.python.weather</tt>, <tt>xbmc.subtitle.module</tt>, <tt>xbmc.python.lyrics</tt>, <tt>xbmc.metadata.scraper.albums</tt>, <tt>xbmc.metadata.scraper.artists</tt>, <tt>xbmc.metadata.scraper.movies</tt>, <tt>xbmc.metadata.scraper.musicvideos</tt>, <tt>xbmc.metadata.scraper.tvshows</tt>, <tt>xbmc.ui.screensaver</tt>, <tt>xbmc.python.pluginsource</tt>, <tt>xbmc.addon.repository</tt>, <tt>xbmc.webinterface</tt>, <tt>xbmc.service</tt>, <tt>xbmc.audioencoder</tt>, <tt>kodi.context.item</tt>, <tt>kodi.audiodecoder</tt>, <tt>kodi.resource.images</tt>, <tt>kodi.resource.language</tt>, <tt>kodi.resource.uisounds</tt>, <tt>xbmc.addon.video</tt>, <tt>xbmc.addon.audio</tt>, <tt>xbmc.addon.image</tt>, <tt>xbmc.addon.executable</tt>, <tt>visualization-library</tt>, <tt>xbmc.metadata.scraper.library</tt>, <tt>xbmc.python.library</tt>, <tt>xbmc.python.module</tt>. See constants at {@link AddonModel.Types}.
 		 * @param content Content provided by the addon. Only considered for plugins and scripts. One of: <tt>unknown</tt>, <tt>video</tt>, <tt>audio</tt>, <tt>image</tt>, <tt>executable</tt>. See constants at {@link AddonModel.Content}.
 		 * @param properties  One or more of: <tt>name</tt>, <tt>version</tt>, <tt>summary</tt>, <tt>description</tt>, <tt>path</tt>, <tt>author</tt>, <tt>thumbnail</tt>, <tt>disclaimer</tt>, <tt>fanart</tt>, <tt>dependencies</tt>, <tt>broken</tt>, <tt>extrainfo</tt>, <tt>rating</tt>, <tt>enabled</tt>. See constants at {@link AddonModel.Fields}.
 		 */
@@ -244,7 +268,7 @@ public final class Addons {
 
 		/**
 		 * Gets all available addons.
-		 * @param type  One of: <tt>unknown</tt>, <tt>xbmc.metadata.scraper.albums</tt>, <tt>xbmc.metadata.scraper.artists</tt>, <tt>xbmc.metadata.scraper.movies</tt>, <tt>xbmc.metadata.scraper.musicvideos</tt>, <tt>xbmc.metadata.scraper.tvshows</tt>, <tt>xbmc.ui.screensaver</tt>, <tt>xbmc.player.musicviz</tt>, <tt>xbmc.python.pluginsource</tt>, <tt>xbmc.python.script</tt>, <tt>xbmc.python.weather</tt>, <tt>xbmc.python.subtitles</tt>, <tt>xbmc.python.lyrics</tt>, <tt>xbmc.gui.skin</tt>, <tt>xbmc.gui.webinterface</tt>, <tt>xbmc.pvrclient</tt>, <tt>xbmc.addon.video</tt>, <tt>xbmc.addon.audio</tt>, <tt>xbmc.addon.image</tt>, <tt>xbmc.addon.executable</tt>, <tt>xbmc.service</tt>. See constants at {@link AddonModel.Types}.
+		 * @param type  One of: <tt>unknown</tt>, <tt>xbmc.player.musicviz</tt>, <tt>xbmc.gui.skin</tt>, <tt>xbmc.pvrclient</tt>, <tt>kodi.adsp</tt>, <tt>xbmc.python.script</tt>, <tt>xbmc.python.weather</tt>, <tt>xbmc.subtitle.module</tt>, <tt>xbmc.python.lyrics</tt>, <tt>xbmc.metadata.scraper.albums</tt>, <tt>xbmc.metadata.scraper.artists</tt>, <tt>xbmc.metadata.scraper.movies</tt>, <tt>xbmc.metadata.scraper.musicvideos</tt>, <tt>xbmc.metadata.scraper.tvshows</tt>, <tt>xbmc.ui.screensaver</tt>, <tt>xbmc.python.pluginsource</tt>, <tt>xbmc.addon.repository</tt>, <tt>xbmc.webinterface</tt>, <tt>xbmc.service</tt>, <tt>xbmc.audioencoder</tt>, <tt>kodi.context.item</tt>, <tt>kodi.audiodecoder</tt>, <tt>kodi.resource.images</tt>, <tt>kodi.resource.language</tt>, <tt>kodi.resource.uisounds</tt>, <tt>xbmc.addon.video</tt>, <tt>xbmc.addon.audio</tt>, <tt>xbmc.addon.image</tt>, <tt>xbmc.addon.executable</tt>, <tt>visualization-library</tt>, <tt>xbmc.metadata.scraper.library</tt>, <tt>xbmc.python.library</tt>, <tt>xbmc.python.module</tt>. See constants at {@link AddonModel.Types}.
 		 * @param content Content provided by the addon. Only considered for plugins and scripts. One of: <tt>unknown</tt>, <tt>video</tt>, <tt>audio</tt>, <tt>image</tt>, <tt>executable</tt>. See constants at {@link AddonModel.Content}.
 		 * @param enabled 
 		 * @param properties  One or more of: <tt>name</tt>, <tt>version</tt>, <tt>summary</tt>, <tt>description</tt>, <tt>path</tt>, <tt>author</tt>, <tt>thumbnail</tt>, <tt>disclaimer</tt>, <tt>fanart</tt>, <tt>dependencies</tt>, <tt>broken</tt>, <tt>extrainfo</tt>, <tt>rating</tt>, <tt>enabled</tt>. See constants at {@link AddonModel.Fields}.

@@ -176,4 +176,20 @@ public final class GlobalModel {
 
 		public final static Set<String> values = new HashSet<String>(Arrays.asList(INCREMENT, DECREMENT));
 	}
+
+	/**
+	 * API Name: <tt>Global.Weekday</tt>
+	 */
+	public interface Weekday {
+
+		public final String MONDAY = "monday";
+		public final String TUESDAY = "tuesday";
+		public final String WEDNESDAY = "wednesday";
+		public final String THURSDAY = "thursday";
+		public final String FRIDAY = "friday";
+		public final String SATURDAY = "saturday";
+		public final String SUNDAY = "sunday";
+
+		public final static Set<String> values = new HashSet<String>(Arrays.asList(MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY));
+	}
 }

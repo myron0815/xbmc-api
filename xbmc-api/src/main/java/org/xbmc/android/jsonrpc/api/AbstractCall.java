@@ -26,10 +26,16 @@ import java.util.HashMap;
 import java.util.Random;
 
 import org.codehaus.jackson.JsonNode;
+import org.codehaus.jackson.JsonProcessingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.node.ArrayNode;
 import org.codehaus.jackson.node.NullNode;
 import org.codehaus.jackson.node.ObjectNode;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Random;
 
 /**
  * Super class of all API call implementations.
@@ -77,6 +83,11 @@ public abstract class AbstractCall<T> {
 	private final static Random RND = new Random(System.currentTimeMillis());
 	protected final static ObjectMapper OM = new ObjectMapper();
 	
+	/**
+	 * Name of the node containing pagination limits
+	 */
+	public static final String LIMITS = "limits";
+
 	/**
 	 * Name of the node containing parameters in the JSON-RPC request
 	 */
@@ -150,7 +161,7 @@ public abstract class AbstractCall<T> {
 	 * </p>
 	 * This must be the root object of the response, containing the
 	 * <tt>result</tt> object.
-	 * @param response
+	 * @param response Root node of response
 	 */
 	public void setResponse(JsonNode response) {
 		if (returnsList()) {
@@ -211,8 +222,8 @@ public abstract class AbstractCall<T> {
 	
 	/**
 	 * Gets the result object from a response.
-	 * @param obj
-	 * @return
+	 * @param obj Response
+	 * @return Result node of response
 	 */
 	protected JsonNode parseResult(JsonNode obj) {
 		return obj.get(RESULT);
@@ -296,6 +307,15 @@ public abstract class AbstractCall<T> {
 		}
 	}
 	
+	// FIXME: correct? used by AbstractCall - Myron
+	protected void addParameter(String name, AbstractModel ... values) {
+		if (values != null) {
+			for (AbstractModel value : values) {
+				getParameters().put(name, value.toJsonNode());
+			}
+		}
+	}
+	
 	/**
 	 * Adds an array of strings to the request object (only if not null and not empty).
 	 * @param name Name of the parameter
@@ -307,8 +327,8 @@ public abstract class AbstractCall<T> {
 			return;
 		}
 		final ArrayNode props = OM.createArrayNode();
-		for (int i = 0; i < values.length; i++) {
-			props.add(values[i]);
+		for (String value : values) {
+			props.add(value);
 		}
 		getParameters().put(name, props);
 	}
@@ -331,8 +351,7 @@ public abstract class AbstractCall<T> {
 	
 	/**
 	 * Returns the parameters array. Use this to add any parameters.
-	 * @param request
-	 * @return
+	 * @return Parameters
 	 */
 	private ObjectNode getParameters() {
 		final ObjectNode request = mRequest;

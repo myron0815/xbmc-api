@@ -43,9 +43,11 @@ public final class AudioModel {
 		// field names
 		public static final String ALBUMID = "albumid";
 		public static final String ALBUMLABEL = "albumlabel";
+		public static final String COMPILATION = "compilation";
 		public static final String DESCRIPTION = "description";
 		public static final String MOOD = "mood";
 		public static final String PLAYCOUNT = "playcount";
+		public static final String RELEASETYPE = "releasetype";
 		public static final String STYLE = "style";
 		public static final String THEME = "theme";
 		public static final String TYPE = "type";
@@ -53,9 +55,11 @@ public final class AudioModel {
 		// class members
 		public final Integer albumid;
 		public final String albumlabel;
+		public final Boolean compilation;
 		public final String description;
 		public final List<String> mood;
 		public final Integer playcount;
+		public final String releasetype;
 		public final List<String> style;
 		public final List<String> theme;
 		public final String type;
@@ -68,9 +72,11 @@ public final class AudioModel {
 			super(node);
 			albumid = parseInt(node, ALBUMID);
 			albumlabel = parseString(node, ALBUMLABEL);
+			compilation = parseBoolean(node, COMPILATION);
 			description = parseString(node, DESCRIPTION);
 			mood = getStringArray(node, MOOD);
 			playcount = parseInt(node, PLAYCOUNT);
+			releasetype = parseString(node, RELEASETYPE);
 			style = getStringArray(node, STYLE);
 			theme = getStringArray(node, THEME);
 			type = parseString(node, TYPE);
@@ -81,6 +87,7 @@ public final class AudioModel {
 			final ObjectNode node = (ObjectNode)super.toJsonNode();
 			node.put(ALBUMID, albumid);
 			node.put(ALBUMLABEL, albumlabel);
+			node.put(COMPILATION, compilation);
 			node.put(DESCRIPTION, description);
 			final ArrayNode moodArray = OM.createArrayNode();
 			for (String item : mood) {
@@ -88,6 +95,7 @@ public final class AudioModel {
 			}
 			node.put(MOOD, moodArray);
 			node.put(PLAYCOUNT, playcount);
+			node.put(RELEASETYPE, releasetype); // enum
 			final ArrayNode styleArray = OM.createArrayNode();
 			for (String item : style) {
 				styleArray.add(item);
@@ -244,9 +252,11 @@ public final class AudioModel {
 		public final static String API_TYPE = "Audio.Details.Base";
 
 		// field names
+		public static final String DATEADDED = "dateadded";
 		public static final String GENRE = "genre";
 
 		// class members
+		public final String dateadded;
 		public final List<String> genre;
 
 		/**
@@ -255,12 +265,14 @@ public final class AudioModel {
 		 */
 		public BaseDetail(JsonNode node) {
 			super(node);
+			dateadded = parseString(node, DATEADDED);
 			genre = getStringArray(node, GENRE);
 		}
 
 		@Override
 		public JsonNode toJsonNode() {
 			final ObjectNode node = (ObjectNode)super.toJsonNode();
+			node.put(DATEADDED, dateadded);
 			final ArrayNode genreArray = OM.createArrayNode();
 			for (String item : genre) {
 				genreArray.add(item);
@@ -396,6 +408,7 @@ public final class AudioModel {
 		public static final String ALBUMARTIST = "albumartist";
 		public static final String ALBUMARTISTID = "albumartistid";
 		public static final String ALBUMID = "albumid";
+		public static final String ALBUMRELEASETYPE = "albumreleasetype";
 		public static final String COMMENT = "comment";
 		public static final String DISC = "disc";
 		public static final String DURATION = "duration";
@@ -413,6 +426,7 @@ public final class AudioModel {
 		public final List<String> albumartist;
 		public final List<Integer> albumartistid;
 		public final Integer albumid;
+		public final String albumreleasetype;
 		public final String comment;
 		public final Integer disc;
 		public final Integer duration;
@@ -435,6 +449,7 @@ public final class AudioModel {
 			albumartist = getStringArray(node, ALBUMARTIST);
 			albumartistid = getIntegerArray(node, ALBUMARTISTID);
 			albumid = parseInt(node, ALBUMID);
+			albumreleasetype = parseString(node, ALBUMRELEASETYPE);
 			comment = parseString(node, COMMENT);
 			disc = parseInt(node, DISC);
 			duration = parseInt(node, DURATION);
@@ -463,6 +478,7 @@ public final class AudioModel {
 			}
 			node.put(ALBUMARTISTID, albumartistidArray);
 			node.put(ALBUMID, albumid);
+			node.put(ALBUMRELEASETYPE, albumreleasetype); // enum
 			node.put(COMMENT, comment);
 			node.put(DISC, disc);
 			node.put(DURATION, duration);
@@ -520,8 +536,11 @@ public final class AudioModel {
 		public final String GENREID = "genreid";
 		public final String ARTISTID = "artistid";
 		public final String DISPLAYARTIST = "displayartist";
+		public final String COMPILATION = "compilation";
+		public final String RELEASETYPE = "releasetype";
+		public final String DATEADDED = "dateadded";
 
-		public final static Set<String> values = new HashSet<String>(Arrays.asList(TITLE, DESCRIPTION, ARTIST, GENRE, THEME, MOOD, STYLE, TYPE, ALBUMLABEL, RATING, YEAR, MUSICBRAINZALBUMID, MUSICBRAINZALBUMARTISTID, FANART, THUMBNAIL, PLAYCOUNT, GENREID, ARTISTID, DISPLAYARTIST));
+		public final static Set<String> values = new HashSet<String>(Arrays.asList(TITLE, DESCRIPTION, ARTIST, GENRE, THEME, MOOD, STYLE, TYPE, ALBUMLABEL, RATING, YEAR, MUSICBRAINZALBUMID, MUSICBRAINZALBUMARTISTID, FANART, THUMBNAIL, PLAYCOUNT, GENREID, ARTISTID, DISPLAYARTIST, COMPILATION, RELEASETYPE, DATEADDED));
 	}
 
 	/**
@@ -543,8 +562,9 @@ public final class AudioModel {
 		public final String FANART = "fanart";
 		public final String THUMBNAIL = "thumbnail";
 		public final String COMPILATIONARTIST = "compilationartist";
+		public final String DATEADDED = "dateadded";
 
-		public final static Set<String> values = new HashSet<String>(Arrays.asList(INSTRUMENT, STYLE, MOOD, BORN, FORMED, DESCRIPTION, GENRE, DIED, DISBANDED, YEARSACTIVE, MUSICBRAINZARTISTID, FANART, THUMBNAIL, COMPILATIONARTIST));
+		public final static Set<String> values = new HashSet<String>(Arrays.asList(INSTRUMENT, STYLE, MOOD, BORN, FORMED, DESCRIPTION, GENRE, DIED, DISBANDED, YEARSACTIVE, MUSICBRAINZARTISTID, FANART, THUMBNAIL, COMPILATIONARTIST, DATEADDED));
 	}
 
 	/**
@@ -578,7 +598,9 @@ public final class AudioModel {
 		public final String ARTISTID = "artistid";
 		public final String DISPLAYARTIST = "displayartist";
 		public final String ALBUMARTISTID = "albumartistid";
+		public final String ALBUMRELEASETYPE = "albumreleasetype";
+		public final String DATEADDED = "dateadded";
 
-		public final static Set<String> values = new HashSet<String>(Arrays.asList(TITLE, ARTIST, ALBUMARTIST, GENRE, YEAR, RATING, ALBUM, TRACK, DURATION, COMMENT, LYRICS, MUSICBRAINZTRACKID, MUSICBRAINZARTISTID, MUSICBRAINZALBUMID, MUSICBRAINZALBUMARTISTID, PLAYCOUNT, FANART, THUMBNAIL, FILE, ALBUMID, LASTPLAYED, DISC, GENREID, ARTISTID, DISPLAYARTIST, ALBUMARTISTID));
+		public final static Set<String> values = new HashSet<String>(Arrays.asList(TITLE, ARTIST, ALBUMARTIST, GENRE, YEAR, RATING, ALBUM, TRACK, DURATION, COMMENT, LYRICS, MUSICBRAINZTRACKID, MUSICBRAINZARTISTID, MUSICBRAINZALBUMID, MUSICBRAINZALBUMARTISTID, PLAYCOUNT, FANART, THUMBNAIL, FILE, ALBUMID, LASTPLAYED, DISC, GENREID, ARTISTID, DISPLAYARTIST, ALBUMARTISTID, ALBUMRELEASETYPE, DATEADDED));
 	}
 }

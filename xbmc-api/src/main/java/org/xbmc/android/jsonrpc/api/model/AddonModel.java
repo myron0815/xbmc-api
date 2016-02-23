@@ -354,28 +354,40 @@ public final class AddonModel {
 		public interface Type {
 
 			public final String UNKNOWN = "unknown";
+			public final String XBMC_PLAYER_MUSICVIZ = "xbmc.player.musicviz";
+			public final String XBMC_GUI_SKIN = "xbmc.gui.skin";
+			public final String XBMC_PVRCLIENT = "xbmc.pvrclient";
+			public final String KODI_ADSP = "kodi.adsp";
+			public final String XBMC_PYTHON_SCRIPT = "xbmc.python.script";
+			public final String XBMC_PYTHON_WEATHER = "xbmc.python.weather";
+			public final String XBMC_SUBTITLE_MODULE = "xbmc.subtitle.module";
+			public final String XBMC_PYTHON_LYRICS = "xbmc.python.lyrics";
 			public final String XBMC_METADATA_SCRAPER_ALBUMS = "xbmc.metadata.scraper.albums";
 			public final String XBMC_METADATA_SCRAPER_ARTISTS = "xbmc.metadata.scraper.artists";
 			public final String XBMC_METADATA_SCRAPER_MOVIES = "xbmc.metadata.scraper.movies";
 			public final String XBMC_METADATA_SCRAPER_MUSICVIDEOS = "xbmc.metadata.scraper.musicvideos";
 			public final String XBMC_METADATA_SCRAPER_TVSHOWS = "xbmc.metadata.scraper.tvshows";
 			public final String XBMC_UI_SCREENSAVER = "xbmc.ui.screensaver";
-			public final String XBMC_PLAYER_MUSICVIZ = "xbmc.player.musicviz";
 			public final String XBMC_PYTHON_PLUGINSOURCE = "xbmc.python.pluginsource";
-			public final String XBMC_PYTHON_SCRIPT = "xbmc.python.script";
-			public final String XBMC_PYTHON_WEATHER = "xbmc.python.weather";
-			public final String XBMC_PYTHON_SUBTITLES = "xbmc.python.subtitles";
-			public final String XBMC_PYTHON_LYRICS = "xbmc.python.lyrics";
-			public final String XBMC_GUI_SKIN = "xbmc.gui.skin";
-			public final String XBMC_GUI_WEBINTERFACE = "xbmc.gui.webinterface";
-			public final String XBMC_PVRCLIENT = "xbmc.pvrclient";
+			public final String XBMC_ADDON_REPOSITORY = "xbmc.addon.repository";
+			public final String XBMC_WEBINTERFACE = "xbmc.webinterface";
+			public final String XBMC_SERVICE = "xbmc.service";
+			public final String XBMC_AUDIOENCODER = "xbmc.audioencoder";
+			public final String KODI_CONTEXT_ITEM = "kodi.context.item";
+			public final String KODI_AUDIODECODER = "kodi.audiodecoder";
+			public final String KODI_RESOURCE_IMAGES = "kodi.resource.images";
+			public final String KODI_RESOURCE_LANGUAGE = "kodi.resource.language";
+			public final String KODI_RESOURCE_UISOUNDS = "kodi.resource.uisounds";
 			public final String XBMC_ADDON_VIDEO = "xbmc.addon.video";
 			public final String XBMC_ADDON_AUDIO = "xbmc.addon.audio";
 			public final String XBMC_ADDON_IMAGE = "xbmc.addon.image";
 			public final String XBMC_ADDON_EXECUTABLE = "xbmc.addon.executable";
-			public final String XBMC_SERVICE = "xbmc.service";
+			public final String VISUALIZATION_LIBRARY = "visualization-library";
+			public final String XBMC_METADATA_SCRAPER_LIBRARY = "xbmc.metadata.scraper.library";
+			public final String XBMC_PYTHON_LIBRARY = "xbmc.python.library";
+			public final String XBMC_PYTHON_MODULE = "xbmc.python.module";
 
-			public final static Set<String> values = new HashSet<String>(Arrays.asList(UNKNOWN, XBMC_METADATA_SCRAPER_ALBUMS, XBMC_METADATA_SCRAPER_ARTISTS, XBMC_METADATA_SCRAPER_MOVIES, XBMC_METADATA_SCRAPER_MUSICVIDEOS, XBMC_METADATA_SCRAPER_TVSHOWS, XBMC_UI_SCREENSAVER, XBMC_PLAYER_MUSICVIZ, XBMC_PYTHON_PLUGINSOURCE, XBMC_PYTHON_SCRIPT, XBMC_PYTHON_WEATHER, XBMC_PYTHON_SUBTITLES, XBMC_PYTHON_LYRICS, XBMC_GUI_SKIN, XBMC_GUI_WEBINTERFACE, XBMC_PVRCLIENT, XBMC_ADDON_VIDEO, XBMC_ADDON_AUDIO, XBMC_ADDON_IMAGE, XBMC_ADDON_EXECUTABLE, XBMC_SERVICE));
+			public final static Set<String> values = new HashSet<String>(Arrays.asList(UNKNOWN, XBMC_PLAYER_MUSICVIZ, XBMC_GUI_SKIN, XBMC_PVRCLIENT, KODI_ADSP, XBMC_PYTHON_SCRIPT, XBMC_PYTHON_WEATHER, XBMC_SUBTITLE_MODULE, XBMC_PYTHON_LYRICS, XBMC_METADATA_SCRAPER_ALBUMS, XBMC_METADATA_SCRAPER_ARTISTS, XBMC_METADATA_SCRAPER_MOVIES, XBMC_METADATA_SCRAPER_MUSICVIDEOS, XBMC_METADATA_SCRAPER_TVSHOWS, XBMC_UI_SCREENSAVER, XBMC_PYTHON_PLUGINSOURCE, XBMC_ADDON_REPOSITORY, XBMC_WEBINTERFACE, XBMC_SERVICE, XBMC_AUDIOENCODER, KODI_CONTEXT_ITEM, KODI_AUDIODECODER, KODI_RESOURCE_IMAGES, KODI_RESOURCE_LANGUAGE, KODI_RESOURCE_UISOUNDS, XBMC_ADDON_VIDEO, XBMC_ADDON_AUDIO, XBMC_ADDON_IMAGE, XBMC_ADDON_EXECUTABLE, VISUALIZATION_LIBRARY, XBMC_METADATA_SCRAPER_LIBRARY, XBMC_PYTHON_LIBRARY, XBMC_PYTHON_MODULE));
 		}
 	}
 
@@ -422,27 +434,39 @@ public final class AddonModel {
 	public interface Types {
 
 		public final String UNKNOWN = "unknown";
+		public final String XBMC_PLAYER_MUSICVIZ = "xbmc.player.musicviz";
+		public final String XBMC_GUI_SKIN = "xbmc.gui.skin";
+		public final String XBMC_PVRCLIENT = "xbmc.pvrclient";
+		public final String KODI_ADSP = "kodi.adsp";
+		public final String XBMC_PYTHON_SCRIPT = "xbmc.python.script";
+		public final String XBMC_PYTHON_WEATHER = "xbmc.python.weather";
+		public final String XBMC_SUBTITLE_MODULE = "xbmc.subtitle.module";
+		public final String XBMC_PYTHON_LYRICS = "xbmc.python.lyrics";
 		public final String XBMC_METADATA_SCRAPER_ALBUMS = "xbmc.metadata.scraper.albums";
 		public final String XBMC_METADATA_SCRAPER_ARTISTS = "xbmc.metadata.scraper.artists";
 		public final String XBMC_METADATA_SCRAPER_MOVIES = "xbmc.metadata.scraper.movies";
 		public final String XBMC_METADATA_SCRAPER_MUSICVIDEOS = "xbmc.metadata.scraper.musicvideos";
 		public final String XBMC_METADATA_SCRAPER_TVSHOWS = "xbmc.metadata.scraper.tvshows";
 		public final String XBMC_UI_SCREENSAVER = "xbmc.ui.screensaver";
-		public final String XBMC_PLAYER_MUSICVIZ = "xbmc.player.musicviz";
 		public final String XBMC_PYTHON_PLUGINSOURCE = "xbmc.python.pluginsource";
-		public final String XBMC_PYTHON_SCRIPT = "xbmc.python.script";
-		public final String XBMC_PYTHON_WEATHER = "xbmc.python.weather";
-		public final String XBMC_PYTHON_SUBTITLES = "xbmc.python.subtitles";
-		public final String XBMC_PYTHON_LYRICS = "xbmc.python.lyrics";
-		public final String XBMC_GUI_SKIN = "xbmc.gui.skin";
-		public final String XBMC_GUI_WEBINTERFACE = "xbmc.gui.webinterface";
-		public final String XBMC_PVRCLIENT = "xbmc.pvrclient";
+		public final String XBMC_ADDON_REPOSITORY = "xbmc.addon.repository";
+		public final String XBMC_WEBINTERFACE = "xbmc.webinterface";
+		public final String XBMC_SERVICE = "xbmc.service";
+		public final String XBMC_AUDIOENCODER = "xbmc.audioencoder";
+		public final String KODI_CONTEXT_ITEM = "kodi.context.item";
+		public final String KODI_AUDIODECODER = "kodi.audiodecoder";
+		public final String KODI_RESOURCE_IMAGES = "kodi.resource.images";
+		public final String KODI_RESOURCE_LANGUAGE = "kodi.resource.language";
+		public final String KODI_RESOURCE_UISOUNDS = "kodi.resource.uisounds";
 		public final String XBMC_ADDON_VIDEO = "xbmc.addon.video";
 		public final String XBMC_ADDON_AUDIO = "xbmc.addon.audio";
 		public final String XBMC_ADDON_IMAGE = "xbmc.addon.image";
 		public final String XBMC_ADDON_EXECUTABLE = "xbmc.addon.executable";
-		public final String XBMC_SERVICE = "xbmc.service";
+		public final String VISUALIZATION_LIBRARY = "visualization-library";
+		public final String XBMC_METADATA_SCRAPER_LIBRARY = "xbmc.metadata.scraper.library";
+		public final String XBMC_PYTHON_LIBRARY = "xbmc.python.library";
+		public final String XBMC_PYTHON_MODULE = "xbmc.python.module";
 
-		public final static Set<String> values = new HashSet<String>(Arrays.asList(UNKNOWN, XBMC_METADATA_SCRAPER_ALBUMS, XBMC_METADATA_SCRAPER_ARTISTS, XBMC_METADATA_SCRAPER_MOVIES, XBMC_METADATA_SCRAPER_MUSICVIDEOS, XBMC_METADATA_SCRAPER_TVSHOWS, XBMC_UI_SCREENSAVER, XBMC_PLAYER_MUSICVIZ, XBMC_PYTHON_PLUGINSOURCE, XBMC_PYTHON_SCRIPT, XBMC_PYTHON_WEATHER, XBMC_PYTHON_SUBTITLES, XBMC_PYTHON_LYRICS, XBMC_GUI_SKIN, XBMC_GUI_WEBINTERFACE, XBMC_PVRCLIENT, XBMC_ADDON_VIDEO, XBMC_ADDON_AUDIO, XBMC_ADDON_IMAGE, XBMC_ADDON_EXECUTABLE, XBMC_SERVICE));
+		public final static Set<String> values = new HashSet<String>(Arrays.asList(UNKNOWN, XBMC_PLAYER_MUSICVIZ, XBMC_GUI_SKIN, XBMC_PVRCLIENT, KODI_ADSP, XBMC_PYTHON_SCRIPT, XBMC_PYTHON_WEATHER, XBMC_SUBTITLE_MODULE, XBMC_PYTHON_LYRICS, XBMC_METADATA_SCRAPER_ALBUMS, XBMC_METADATA_SCRAPER_ARTISTS, XBMC_METADATA_SCRAPER_MOVIES, XBMC_METADATA_SCRAPER_MUSICVIDEOS, XBMC_METADATA_SCRAPER_TVSHOWS, XBMC_UI_SCREENSAVER, XBMC_PYTHON_PLUGINSOURCE, XBMC_ADDON_REPOSITORY, XBMC_WEBINTERFACE, XBMC_SERVICE, XBMC_AUDIOENCODER, KODI_CONTEXT_ITEM, KODI_AUDIODECODER, KODI_RESOURCE_IMAGES, KODI_RESOURCE_LANGUAGE, KODI_RESOURCE_UISOUNDS, XBMC_ADDON_VIDEO, XBMC_ADDON_AUDIO, XBMC_ADDON_IMAGE, XBMC_ADDON_EXECUTABLE, VISUALIZATION_LIBRARY, XBMC_METADATA_SCRAPER_LIBRARY, XBMC_PYTHON_LIBRARY, XBMC_PYTHON_MODULE));
 	}
 }

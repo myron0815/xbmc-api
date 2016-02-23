@@ -866,7 +866,7 @@ public final class ListModel {
 		/**
 		 * @param operator One of: <tt>contains</tt>, <tt>doesnotcontain</tt>, <tt>is</tt>, <tt>isnot</tt>, <tt>startswith</tt>, <tt>endswith</tt>, <tt>greaterthan</tt>, <tt>lessthan</tt>, <tt>after</tt>, <tt>before</tt>, <tt>inthelast</tt>, <tt>notinthelast</tt>, <tt>true</tt>, <tt>false</tt>, <tt>between</tt>. See constants at {@link ListModel.FilterRule.Operator}.
 		 * @param value
-		 * @param field One of: <tt>title</tt>, <tt>tvshow</tt>, <tt>plot</tt>, <tt>votes</tt>, <tt>rating</tt>, <tt>time</tt>, <tt>writers</tt>, <tt>airdate</tt>, <tt>playcount</tt>, <tt>lastplayed</tt>, <tt>inprogress</tt>, <tt>genre</tt>, <tt>year</tt>, <tt>director</tt>, <tt>actor</tt>, <tt>episode</tt>, <tt>season</tt>, <tt>filename</tt>, <tt>path</tt>, <tt>studio</tt>, <tt>mpaarating</tt>, <tt>dateadded</tt>, <tt>videoresolution</tt>, <tt>audiochannels</tt>, <tt>videocodec</tt>, <tt>audiocodec</tt>, <tt>audiolanguage</tt>, <tt>subtitlelanguage</tt>, <tt>videoaspect</tt>, <tt>playlist</tt>, <tt>virtualfolder</tt>. See constants at {@link ListModel.EpisodeFilterRule.Field}.
+		 * @param field One of: <tt>title</tt>, <tt>tvshow</tt>, <tt>plot</tt>, <tt>votes</tt>, <tt>rating</tt>, <tt>time</tt>, <tt>writers</tt>, <tt>airdate</tt>, <tt>playcount</tt>, <tt>lastplayed</tt>, <tt>inprogress</tt>, <tt>genre</tt>, <tt>year</tt>, <tt>director</tt>, <tt>actor</tt>, <tt>episode</tt>, <tt>season</tt>, <tt>filename</tt>, <tt>path</tt>, <tt>studio</tt>, <tt>mpaarating</tt>, <tt>dateadded</tt>, <tt>tag</tt>, <tt>videoresolution</tt>, <tt>audiochannels</tt>, <tt>videocodec</tt>, <tt>audiocodec</tt>, <tt>audiolanguage</tt>, <tt>subtitlelanguage</tt>, <tt>videoaspect</tt>, <tt>playlist</tt>, <tt>virtualfolder</tt>. See constants at {@link ListModel.EpisodeFilterRule.Field}.
 		 */
 		public EpisodeFilterRule(String operator, Value value, String field) {
 			super(operator, value);
@@ -907,6 +907,7 @@ public final class ListModel {
 			public final String STUDIO = "studio";
 			public final String MPAARATING = "mpaarating";
 			public final String DATEADDED = "dateadded";
+			public final String TAG = "tag";
 			public final String VIDEORESOLUTION = "videoresolution";
 			public final String AUDIOCHANNELS = "audiochannels";
 			public final String VIDEOCODEC = "videocodec";
@@ -917,7 +918,7 @@ public final class ListModel {
 			public final String PLAYLIST = "playlist";
 			public final String VIRTUALFOLDER = "virtualfolder";
 
-			public final static Set<String> values = new HashSet<String>(Arrays.asList(TITLE, TVSHOW, PLOT, VOTES, RATING, TIME, WRITERS, AIRDATE, PLAYCOUNT, LASTPLAYED, INPROGRESS, GENRE, YEAR, DIRECTOR, ACTOR, EPISODE, SEASON, FILENAME, PATH, STUDIO, MPAARATING, DATEADDED, VIDEORESOLUTION, AUDIOCHANNELS, VIDEOCODEC, AUDIOCODEC, AUDIOLANGUAGE, SUBTITLELANGUAGE, VIDEOASPECT, PLAYLIST, VIRTUALFOLDER));
+			public final static Set<String> values = new HashSet<String>(Arrays.asList(TITLE, TVSHOW, PLOT, VOTES, RATING, TIME, WRITERS, AIRDATE, PLAYCOUNT, LASTPLAYED, INPROGRESS, GENRE, YEAR, DIRECTOR, ACTOR, EPISODE, SEASON, FILENAME, PATH, STUDIO, MPAARATING, DATEADDED, TAG, VIDEORESOLUTION, AUDIOCHANNELS, VIDEOCODEC, AUDIOCODEC, AUDIOLANGUAGE, SUBTITLELANGUAGE, VIDEOASPECT, PLAYLIST, VIRTUALFOLDER));
 		}
 	}
 
@@ -1081,7 +1082,7 @@ public final class ListModel {
 		/**
 		 * @param operator One of: <tt>contains</tt>, <tt>doesnotcontain</tt>, <tt>is</tt>, <tt>isnot</tt>, <tt>startswith</tt>, <tt>endswith</tt>, <tt>greaterthan</tt>, <tt>lessthan</tt>, <tt>after</tt>, <tt>before</tt>, <tt>inthelast</tt>, <tt>notinthelast</tt>, <tt>true</tt>, <tt>false</tt>, <tt>between</tt>. See constants at {@link ListModel.FilterRule.Operator}.
 		 * @param value
-		 * @param field One of: <tt>genre</tt>, <tt>album</tt>, <tt>artist</tt>, <tt>albumartist</tt>, <tt>title</tt>, <tt>year</tt>, <tt>time</tt>, <tt>tracknumber</tt>, <tt>filename</tt>, <tt>path</tt>, <tt>playcount</tt>, <tt>lastplayed</tt>, <tt>rating</tt>, <tt>comment</tt>, <tt>playlist</tt>, <tt>virtualfolder</tt>. See constants at {@link ListModel.SongFilterRule.Field}.
+		 * @param field One of: <tt>genre</tt>, <tt>album</tt>, <tt>artist</tt>, <tt>albumartist</tt>, <tt>title</tt>, <tt>year</tt>, <tt>time</tt>, <tt>tracknumber</tt>, <tt>filename</tt>, <tt>path</tt>, <tt>playcount</tt>, <tt>lastplayed</tt>, <tt>rating</tt>, <tt>comment</tt>, <tt>moods</tt>, <tt>playlist</tt>, <tt>virtualfolder</tt>. See constants at {@link ListModel.SongFilterRule.Field}.
 		 */
 		public SongFilterRule(String operator, Value value, String field) {
 			super(operator, value);
@@ -1114,10 +1115,11 @@ public final class ListModel {
 			public final String LASTPLAYED = "lastplayed";
 			public final String RATING = "rating";
 			public final String COMMENT = "comment";
+			public final String MOODS = "moods";
 			public final String PLAYLIST = "playlist";
 			public final String VIRTUALFOLDER = "virtualfolder";
 
-			public final static Set<String> values = new HashSet<String>(Arrays.asList(GENRE, ALBUM, ARTIST, ALBUMARTIST, TITLE, YEAR, TIME, TRACKNUMBER, FILENAME, PATH, PLAYCOUNT, LASTPLAYED, RATING, COMMENT, PLAYLIST, VIRTUALFOLDER));
+			public final static Set<String> values = new HashSet<String>(Arrays.asList(GENRE, ALBUM, ARTIST, ALBUMARTIST, TITLE, YEAR, TIME, TRACKNUMBER, FILENAME, PATH, PLAYCOUNT, LASTPLAYED, RATING, COMMENT, MOODS, PLAYLIST, VIRTUALFOLDER));
 		}
 	}
 
@@ -1181,6 +1183,57 @@ public final class ListModel {
 			public final String VIRTUALFOLDER = "virtualfolder";
 
 			public final static Set<String> values = new HashSet<String>(Arrays.asList(TITLE, PLOT, STATUS, VOTES, RATING, YEAR, GENRE, DIRECTOR, ACTOR, NUMEPISODES, NUMWATCHED, PLAYCOUNT, PATH, STUDIO, MPAARATING, DATEADDED, LASTPLAYED, INPROGRESS, TAG, PLAYLIST, VIRTUALFOLDER));
+		}
+	}
+
+	/**
+	 * API Name: <tt>List.Filter.Rule.Textures</tt>
+	 * <p/>
+	 * Note: This class is used as parameter only.<br/>
+	 * <i>This class was generated automatically from XBMC's JSON-RPC introspect.</i>
+	 */
+	public static class TextureFilterRule extends FilterRule {
+		public final static String API_TYPE = "List.Filter.Rule.Textures";
+
+		// field names
+		public static final String FIELD = "field";
+
+		// class members
+		public final String field;
+
+		/**
+		 * @param operator One of: <tt>contains</tt>, <tt>doesnotcontain</tt>, <tt>is</tt>, <tt>isnot</tt>, <tt>startswith</tt>, <tt>endswith</tt>, <tt>greaterthan</tt>, <tt>lessthan</tt>, <tt>after</tt>, <tt>before</tt>, <tt>inthelast</tt>, <tt>notinthelast</tt>, <tt>true</tt>, <tt>false</tt>, <tt>between</tt>. See constants at {@link ListModel.FilterRule.Operator}.
+		 * @param value
+		 * @param field One of: <tt>textureid</tt>, <tt>url</tt>, <tt>cachedurl</tt>, <tt>lasthashcheck</tt>, <tt>imagehash</tt>, <tt>width</tt>, <tt>height</tt>, <tt>usecount</tt>, <tt>lastused</tt>. See constants at {@link ListModel.TextureFilterRule.Field}.
+		 */
+		public TextureFilterRule(String operator, Value value, String field) {
+			super(operator, value);
+			this.field = field;
+		}
+
+		@Override
+		public JsonNode toJsonNode() {
+			final ObjectNode node = (ObjectNode)super.toJsonNode();
+			node.put(FIELD, field); // enum
+			return node;
+		}
+
+		/**
+		 * API Name: <tt>field</tt>
+		 */
+		public interface Field {
+
+			public final String TEXTUREID = "textureid";
+			public final String URL = "url";
+			public final String CACHEDURL = "cachedurl";
+			public final String LASTHASHCHECK = "lasthashcheck";
+			public final String IMAGEHASH = "imagehash";
+			public final String WIDTH = "width";
+			public final String HEIGHT = "height";
+			public final String USECOUNT = "usecount";
+			public final String LASTUSED = "lastused";
+
+			public final static Set<String> values = new HashSet<String>(Arrays.asList(TEXTUREID, URL, CACHEDURL, LASTHASHCHECK, IMAGEHASH, WIDTH, HEIGHT, USECOUNT, LASTUSED));
 		}
 	}
 
@@ -1422,6 +1475,124 @@ public final class ListModel {
 	}
 
 	/**
+	 * API Name: <tt>List.Filter.Textures</tt>
+	 * <p/>
+	 * Note: This class is used as parameter only.<br/>
+	 * <i>This class was generated automatically from XBMC's JSON-RPC introspect.</i>
+	 */
+	public static class TextureFilter extends AbstractModel {
+		public final static String API_TYPE = "List.Filter.Textures";
+
+		// class members
+		public final And and;
+		public final TextureFilterRule filterRuleTextures;
+		public final Or or;
+
+		/**
+		 * @param and
+		 */
+		public TextureFilter(And and) {
+			this.and = and;
+			this.filterRuleTextures = null;
+			this.or = null;
+		}
+
+		/**
+		 * @param filterRuleTextures
+		 */
+		public TextureFilter(TextureFilterRule filterRuleTextures) {
+			this.filterRuleTextures = filterRuleTextures;
+			this.and = null;
+			this.or = null;
+		}
+
+		/**
+		 * @param or
+		 */
+		public TextureFilter(Or or) {
+			this.or = or;
+			this.and = null;
+			this.filterRuleTextures = null;
+		}
+
+		@Override
+		public JsonNode toJsonNode() {
+			if (and != null) {
+				return and.toJsonNode();
+			}
+			if (filterRuleTextures != null) {
+				return filterRuleTextures.toJsonNode();
+			}
+			if (or != null) {
+				return or.toJsonNode();
+			}
+			return null; // this is completely excluded. theoretically.
+		}
+
+		/**
+		 * Note: This class is used as parameter only.<br/>
+		 * <i>This class was generated automatically from XBMC's JSON-RPC introspect.</i>
+		 */
+		public static class And extends AbstractModel {
+
+			// field names
+			public static final String AND = "and";
+
+			// class members
+			public final List<TextureFilter> and;
+
+			/**
+			 * @param and
+			 */
+			public And(List<TextureFilter> and) {
+				this.and = and;
+			}
+
+			@Override
+			public JsonNode toJsonNode() {
+				final ObjectNode node = OM.createObjectNode();
+				final ArrayNode andArray = OM.createArrayNode();
+				for (TextureFilter item : and) {
+					andArray.add(item.toJsonNode());
+				}
+				node.put(AND, andArray);
+				return node;
+			}
+		}
+
+		/**
+		 * Note: This class is used as parameter only.<br/>
+		 * <i>This class was generated automatically from XBMC's JSON-RPC introspect.</i>
+		 */
+		public static class Or extends AbstractModel {
+
+			// field names
+			public static final String OR = "or";
+
+			// class members
+			public final List<TextureFilter> or;
+
+			/**
+			 * @param or
+			 */
+			public Or(List<TextureFilter> or) {
+				this.or = or;
+			}
+
+			@Override
+			public JsonNode toJsonNode() {
+				final ObjectNode node = OM.createObjectNode();
+				final ArrayNode orArray = OM.createArrayNode();
+				for (TextureFilter item : or) {
+					orArray.add(item.toJsonNode());
+				}
+				node.put(OR, orArray);
+				return node;
+			}
+		}
+	}
+
+	/**
 	 * API Name: <tt>List.Item.All</tt>
 	 * <p/>
 	 * Note: This class is used as result only.<br/>
@@ -1520,11 +1691,13 @@ public final class ListModel {
 		public static final String ALBUMARTISTID = "albumartistid";
 		public static final String ALBUMID = "albumid";
 		public static final String ALBUMLABEL = "albumlabel";
+		public static final String ALBUMRELEASETYPE = "albumreleasetype";
 		public static final String ART = "art";
 		public static final String ARTIST = "artist";
 		public static final String ARTISTID = "artistid";
 		public static final String CAST = "cast";
 		public static final String COMMENT = "comment";
+		public static final String COMPILATION = "compilation";
 		public static final String COUNTRY = "country";
 		public static final String DATEADDED = "dateadded";
 		public static final String DESCRIPTION = "description";
@@ -1557,6 +1730,7 @@ public final class ListModel {
 		public static final String PREMIERED = "premiered";
 		public static final String PRODUCTIONCODE = "productioncode";
 		public static final String RATING = "rating";
+		public static final String RELEASETYPE = "releasetype";
 		public static final String RESUME = "resume";
 		public static final String RUNTIME = "runtime";
 		public static final String SEASON = "season";
@@ -1565,6 +1739,8 @@ public final class ListModel {
 		public static final String SHOWLINK = "showlink";
 		public static final String SHOWTITLE = "showtitle";
 		public static final String SORTTITLE = "sorttitle";
+		public static final String SPECIALSORTEPISODE = "specialsortepisode";
+		public static final String SPECIALSORTSEASON = "specialsortseason";
 		public static final String STREAMDETAILS = "streamdetails";
 		public static final String STUDIO = "studio";
 		public static final String STYLE = "style";
@@ -1590,6 +1766,7 @@ public final class ListModel {
 		public final List<Integer> albumartistid;
 		public final Integer albumid;
 		public final String albumlabel;
+		public final String albumreleasetype;
 		/**
 		 * Multiple inheritage: copied from <tt>Video.Details.Base</tt>.
 		 */
@@ -1604,6 +1781,7 @@ public final class ListModel {
 		public final List<Integer> artistid;
 		public final List<VideoModel.Cast> cast;
 		public final String comment;
+		public final Boolean compilation;
 		public final List<String> country;
 		/**
 		 * Multiple inheritage: copied from <tt>Video.Details.Item</tt>.
@@ -1678,6 +1856,7 @@ public final class ListModel {
 		 * Multiple inheritage: copied from <tt>Audio.Details.Media</tt>.
 		 */
 		public final Integer rating;
+		public final String releasetype;
 		/**
 		 * Multiple inheritage: copied from <tt>Video.Details.File</tt>.
 		 */
@@ -1692,6 +1871,8 @@ public final class ListModel {
 		public final List<String> showlink;
 		public final String showtitle;
 		public final String sorttitle;
+		public final Integer specialsortepisode;
+		public final Integer specialsortseason;
 		/**
 		 * Multiple inheritage: copied from <tt>Video.Details.File</tt>.
 		 */
@@ -1729,11 +1910,13 @@ public final class ListModel {
 		 * @param albumartistid
 		 * @param albumid
 		 * @param albumlabel
+		 * @param albumreleasetype One of: <tt>album</tt>, <tt>single</tt>. See constants at {@link ListModel.BaseItem.Albumreleasetype}.
 		 * @param art
 		 * @param artist
 		 * @param artistid
 		 * @param cast
 		 * @param comment
+		 * @param compilation
 		 * @param country
 		 * @param dateadded
 		 * @param description
@@ -1766,6 +1949,7 @@ public final class ListModel {
 		 * @param premiered
 		 * @param productioncode
 		 * @param rating
+		 * @param releasetype One of: <tt>album</tt>, <tt>single</tt>. See constants at {@link ListModel.BaseItem.Releasetype}.
 		 * @param resume
 		 * @param runtime
 		 * @param season
@@ -1774,6 +1958,8 @@ public final class ListModel {
 		 * @param showlink
 		 * @param showtitle
 		 * @param sorttitle
+		 * @param specialsortepisode
+		 * @param specialsortseason
 		 * @param streamdetails
 		 * @param studio
 		 * @param style
@@ -1793,17 +1979,19 @@ public final class ListModel {
 		 * @param writer
 		 * @param year
 		 */
-		public BaseItem(String album, List<String> albumartist, List<Integer> albumartistid, Integer albumid, String albumlabel, MediaModel.Artwork art, List<String> artist, List<Integer> artistid, List<VideoModel.Cast> cast, String comment, List<String> country, String dateadded, String description, List<String> director, Integer disc, String displayartist, Integer duration, Integer episode, String episodeguide, String fanart, String file, String firstaired, List<String> genre, List<Integer> genreid, Integer id, String imdbnumber, String label, String lastplayed, String lyrics, List<String> mood, String mpaa, String musicbrainzalbumartistid, String musicbrainzalbumid, String musicbrainzartistid, String musicbrainztrackid, String originaltitle, Integer playcount, String plot, String plotoutline, String premiered, String productioncode, Integer rating, VideoModel.Resume resume, Integer runtime, Integer season, String set, Integer setid, List<String> showlink, String showtitle, String sorttitle, VideoModel.Streams streamdetails, List<String> studio, List<String> style, List<String> tag, String tagline, List<String> theme, String thumbnail, String title, Integer top250, Integer track, String trailer, Integer tvshowid, String type, HashMap<String, String> uniqueid, String votes, Integer watchedepisodes, List<String> writer, Integer year) {
+		public BaseItem(String album, List<String> albumartist, List<Integer> albumartistid, Integer albumid, String albumlabel, String albumreleasetype, MediaModel.Artwork art, List<String> artist, List<Integer> artistid, List<VideoModel.Cast> cast, String comment, Boolean compilation, List<String> country, String dateadded, String description, List<String> director, Integer disc, String displayartist, Integer duration, Integer episode, String episodeguide, String fanart, String file, String firstaired, List<String> genre, List<Integer> genreid, Integer id, String imdbnumber, String label, String lastplayed, String lyrics, List<String> mood, String mpaa, String musicbrainzalbumartistid, String musicbrainzalbumid, String musicbrainzartistid, String musicbrainztrackid, String originaltitle, Integer playcount, String plot, String plotoutline, String premiered, String productioncode, Integer rating, String releasetype, VideoModel.Resume resume, Integer runtime, Integer season, String set, Integer setid, List<String> showlink, String showtitle, String sorttitle, Integer specialsortepisode, Integer specialsortseason, VideoModel.Streams streamdetails, List<String> studio, List<String> style, List<String> tag, String tagline, List<String> theme, String thumbnail, String title, Integer top250, Integer track, String trailer, Integer tvshowid, String type, HashMap<String, String> uniqueid, String votes, Integer watchedepisodes, List<String> writer, Integer year) {
 			this.album = album;
 			this.albumartist = albumartist;
 			this.albumartistid = albumartistid;
 			this.albumid = albumid;
 			this.albumlabel = albumlabel;
+			this.albumreleasetype = albumreleasetype;
 			this.art = art;
 			this.artist = artist;
 			this.artistid = artistid;
 			this.cast = cast;
 			this.comment = comment;
+			this.compilation = compilation;
 			this.country = country;
 			this.dateadded = dateadded;
 			this.description = description;
@@ -1836,6 +2024,7 @@ public final class ListModel {
 			this.premiered = premiered;
 			this.productioncode = productioncode;
 			this.rating = rating;
+			this.releasetype = releasetype;
 			this.resume = resume;
 			this.runtime = runtime;
 			this.season = season;
@@ -1844,6 +2033,8 @@ public final class ListModel {
 			this.showlink = showlink;
 			this.showtitle = showtitle;
 			this.sorttitle = sorttitle;
+			this.specialsortepisode = specialsortepisode;
+			this.specialsortseason = specialsortseason;
 			this.streamdetails = streamdetails;
 			this.studio = studio;
 			this.style = style;
@@ -1874,11 +2065,13 @@ public final class ListModel {
 			albumartistid = getIntegerArray(node, ALBUMARTISTID);
 			albumid = parseInt(node, ALBUMID);
 			albumlabel = parseString(node, ALBUMLABEL);
+			albumreleasetype = parseString(node, ALBUMRELEASETYPE);
 			art = node.has(ART) ? new MediaModel.Artwork(node.get(ART)) : null;
 			artist = getStringArray(node, ARTIST);
 			artistid = getIntegerArray(node, ARTISTID);
 			cast = VideoModel.Cast.getVideoModelCastList(node, CAST);
 			comment = parseString(node, COMMENT);
+			compilation = parseBoolean(node, COMPILATION);
 			country = getStringArray(node, COUNTRY);
 			dateadded = parseString(node, DATEADDED);
 			description = parseString(node, DESCRIPTION);
@@ -1911,6 +2104,7 @@ public final class ListModel {
 			premiered = parseString(node, PREMIERED);
 			productioncode = parseString(node, PRODUCTIONCODE);
 			rating = parseInt(node, RATING);
+			releasetype = parseString(node, RELEASETYPE);
 			resume = node.has(RESUME) ? new VideoModel.Resume(node.get(RESUME)) : null;
 			runtime = parseInt(node, RUNTIME);
 			season = parseInt(node, SEASON);
@@ -1919,6 +2113,8 @@ public final class ListModel {
 			showlink = getStringArray(node, SHOWLINK);
 			showtitle = parseString(node, SHOWTITLE);
 			sorttitle = parseString(node, SORTTITLE);
+			specialsortepisode = parseInt(node, SPECIALSORTEPISODE);
+			specialsortseason = parseInt(node, SPECIALSORTSEASON);
 			streamdetails = node.has(STREAMDETAILS) ? new VideoModel.Streams(node.get(STREAMDETAILS)) : null;
 			studio = getStringArray(node, STUDIO);
 			style = getStringArray(node, STYLE);
@@ -1955,6 +2151,7 @@ public final class ListModel {
 			node.put(ALBUMARTISTID, albumartistidArray);
 			node.put(ALBUMID, albumid);
 			node.put(ALBUMLABEL, albumlabel);
+			node.put(ALBUMRELEASETYPE, albumreleasetype); // enum
 			node.put(ART, art.toJsonNode());
 			final ArrayNode artistArray = OM.createArrayNode();
 			for (String item : artist) {
@@ -1972,6 +2169,7 @@ public final class ListModel {
 			}
 			node.put(CAST, castArray);
 			node.put(COMMENT, comment);
+			node.put(COMPILATION, compilation);
 			final ArrayNode countryArray = OM.createArrayNode();
 			for (String item : country) {
 				countryArray.add(item);
@@ -2024,6 +2222,7 @@ public final class ListModel {
 			node.put(PREMIERED, premiered);
 			node.put(PRODUCTIONCODE, productioncode);
 			node.put(RATING, rating);
+			node.put(RELEASETYPE, releasetype); // enum
 			node.put(RESUME, resume.toJsonNode());
 			node.put(RUNTIME, runtime);
 			node.put(SEASON, season);
@@ -2036,6 +2235,8 @@ public final class ListModel {
 			node.put(SHOWLINK, showlinkArray);
 			node.put(SHOWTITLE, showtitle);
 			node.put(SORTTITLE, sorttitle);
+			node.put(SPECIALSORTEPISODE, specialsortepisode);
+			node.put(SPECIALSORTSEASON, specialsortseason);
 			node.put(STREAMDETAILS, streamdetails.toJsonNode());
 			final ArrayNode studioArray = OM.createArrayNode();
 			for (String item : studio) {
@@ -2112,6 +2313,28 @@ public final class ListModel {
 			public final String CHANNEL = "channel";
 
 			public final static Set<String> values = new HashSet<String>(Arrays.asList(UNKNOWN, MOVIE, EPISODE, MUSICVIDEO, SONG, PICTURE, CHANNEL));
+		}
+
+		/**
+		 * API Name: <tt>albumreleasetype</tt>
+		 */
+		public interface Albumreleasetype {
+
+			public final String ALBUM = "album";
+			public final String SINGLE = "single";
+
+			public final static Set<String> values = new HashSet<String>(Arrays.asList(ALBUM, SINGLE));
+	}
+
+	/**
+		 * API Name: <tt>releasetype</tt>
+		 */
+		public interface Releasetype {
+
+			public final String ALBUM = "album";
+			public final String SINGLE = "single";
+
+			public final static Set<String> values = new HashSet<String>(Arrays.asList(ALBUM, SINGLE));
 		}
 	}
 
@@ -2520,8 +2743,13 @@ public final class ListModel {
 		public final String CHANNELNUMBER = "channelnumber";
 		public final String STARTTIME = "starttime";
 		public final String ENDTIME = "endtime";
+		public final String SPECIALSORTSEASON = "specialsortseason";
+		public final String SPECIALSORTEPISODE = "specialsortepisode";
+		public final String COMPILATION = "compilation";
+		public final String RELEASETYPE = "releasetype";
+		public final String ALBUMRELEASETYPE = "albumreleasetype";
 
-		public final static Set<String> values = new HashSet<String>(Arrays.asList(TITLE, ARTIST, ALBUMARTIST, GENRE, YEAR, RATING, ALBUM, TRACK, DURATION, COMMENT, LYRICS, MUSICBRAINZTRACKID, MUSICBRAINZARTISTID, MUSICBRAINZALBUMID, MUSICBRAINZALBUMARTISTID, PLAYCOUNT, FANART, DIRECTOR, TRAILER, TAGLINE, PLOT, PLOTOUTLINE, ORIGINALTITLE, LASTPLAYED, WRITER, STUDIO, MPAA, CAST, COUNTRY, IMDBNUMBER, PREMIERED, PRODUCTIONCODE, RUNTIME, SET, SHOWLINK, STREAMDETAILS, TOP250, VOTES, FIRSTAIRED, SEASON, EPISODE, SHOWTITLE, THUMBNAIL, FILE, RESUME, ARTISTID, ALBUMID, TVSHOWID, SETID, WATCHEDEPISODES, DISC, TAG, ART, GENREID, DISPLAYARTIST, ALBUMARTISTID, DESCRIPTION, THEME, MOOD, STYLE, ALBUMLABEL, SORTTITLE, EPISODEGUIDE, UNIQUEID, DATEADDED, CHANNEL, CHANNELTYPE, HIDDEN, LOCKED, CHANNELNUMBER, STARTTIME, ENDTIME));
+		public final static Set<String> values = new HashSet<String>(Arrays.asList(TITLE, ARTIST, ALBUMARTIST, GENRE, YEAR, RATING, ALBUM, TRACK, DURATION, COMMENT, LYRICS, MUSICBRAINZTRACKID, MUSICBRAINZARTISTID, MUSICBRAINZALBUMID, MUSICBRAINZALBUMARTISTID, PLAYCOUNT, FANART, DIRECTOR, TRAILER, TAGLINE, PLOT, PLOTOUTLINE, ORIGINALTITLE, LASTPLAYED, WRITER, STUDIO, MPAA, CAST, COUNTRY, IMDBNUMBER, PREMIERED, PRODUCTIONCODE, RUNTIME, SET, SHOWLINK, STREAMDETAILS, TOP250, VOTES, FIRSTAIRED, SEASON, EPISODE, SHOWTITLE, THUMBNAIL, FILE, RESUME, ARTISTID, ALBUMID, TVSHOWID, SETID, WATCHEDEPISODES, DISC, TAG, ART, GENREID, DISPLAYARTIST, ALBUMARTISTID, DESCRIPTION, THEME, MOOD, STYLE, ALBUMLABEL, SORTTITLE, EPISODEGUIDE, UNIQUEID, DATEADDED, CHANNEL, CHANNELTYPE, HIDDEN, LOCKED, CHANNELNUMBER, STARTTIME, ENDTIME, SPECIALSORTSEASON, SPECIALSORTEPISODE, COMPILATION, RELEASETYPE, ALBUMRELEASETYPE));
 	}
 
 	/**
@@ -2597,8 +2825,10 @@ public final class ListModel {
 		public final String SIZE = "size";
 		public final String LASTMODIFIED = "lastmodified";
 		public final String MIMETYPE = "mimetype";
+		public final String SPECIALSORTSEASON = "specialsortseason";
+		public final String SPECIALSORTEPISODE = "specialsortepisode";
 
-		public final static Set<String> values = new HashSet<String>(Arrays.asList(TITLE, ARTIST, ALBUMARTIST, GENRE, YEAR, RATING, ALBUM, TRACK, DURATION, COMMENT, LYRICS, MUSICBRAINZTRACKID, MUSICBRAINZARTISTID, MUSICBRAINZALBUMID, MUSICBRAINZALBUMARTISTID, PLAYCOUNT, FANART, DIRECTOR, TRAILER, TAGLINE, PLOT, PLOTOUTLINE, ORIGINALTITLE, LASTPLAYED, WRITER, STUDIO, MPAA, CAST, COUNTRY, IMDBNUMBER, PREMIERED, PRODUCTIONCODE, RUNTIME, SET, SHOWLINK, STREAMDETAILS, TOP250, VOTES, FIRSTAIRED, SEASON, EPISODE, SHOWTITLE, THUMBNAIL, FILE, RESUME, ARTISTID, ALBUMID, TVSHOWID, SETID, WATCHEDEPISODES, DISC, TAG, ART, GENREID, DISPLAYARTIST, ALBUMARTISTID, DESCRIPTION, THEME, MOOD, STYLE, ALBUMLABEL, SORTTITLE, EPISODEGUIDE, UNIQUEID, DATEADDED, SIZE, LASTMODIFIED, MIMETYPE));
+		public final static Set<String> values = new HashSet<String>(Arrays.asList(TITLE, ARTIST, ALBUMARTIST, GENRE, YEAR, RATING, ALBUM, TRACK, DURATION, COMMENT, LYRICS, MUSICBRAINZTRACKID, MUSICBRAINZARTISTID, MUSICBRAINZALBUMID, MUSICBRAINZALBUMARTISTID, PLAYCOUNT, FANART, DIRECTOR, TRAILER, TAGLINE, PLOT, PLOTOUTLINE, ORIGINALTITLE, LASTPLAYED, WRITER, STUDIO, MPAA, CAST, COUNTRY, IMDBNUMBER, PREMIERED, PRODUCTIONCODE, RUNTIME, SET, SHOWLINK, STREAMDETAILS, TOP250, VOTES, FIRSTAIRED, SEASON, EPISODE, SHOWTITLE, THUMBNAIL, FILE, RESUME, ARTISTID, ALBUMID, TVSHOWID, SETID, WATCHEDEPISODES, DISC, TAG, ART, GENREID, DISPLAYARTIST, ALBUMARTISTID, DESCRIPTION, THEME, MOOD, STYLE, ALBUMLABEL, SORTTITLE, EPISODEGUIDE, UNIQUEID, DATEADDED, SIZE, LASTMODIFIED, MIMETYPE, SPECIALSORTSEASON, SPECIALSORTEPISODE));
 	}
 
 	/**
@@ -2673,6 +2903,7 @@ public final class ListModel {
 		public final String STUDIO = "studio";
 		public final String MPAARATING = "mpaarating";
 		public final String DATEADDED = "dateadded";
+		public final String TAG = "tag";
 		public final String VIDEORESOLUTION = "videoresolution";
 		public final String AUDIOCHANNELS = "audiochannels";
 		public final String VIDEOCODEC = "videocodec";
@@ -2683,7 +2914,7 @@ public final class ListModel {
 		public final String PLAYLIST = "playlist";
 		public final String VIRTUALFOLDER = "virtualfolder";
 
-		public final static Set<String> values = new HashSet<String>(Arrays.asList(TITLE, TVSHOW, PLOT, VOTES, RATING, TIME, WRITERS, AIRDATE, PLAYCOUNT, LASTPLAYED, INPROGRESS, GENRE, YEAR, DIRECTOR, ACTOR, EPISODE, SEASON, FILENAME, PATH, STUDIO, MPAARATING, DATEADDED, VIDEORESOLUTION, AUDIOCHANNELS, VIDEOCODEC, AUDIOCODEC, AUDIOLANGUAGE, SUBTITLELANGUAGE, VIDEOASPECT, PLAYLIST, VIRTUALFOLDER));
+		public final static Set<String> values = new HashSet<String>(Arrays.asList(TITLE, TVSHOW, PLOT, VOTES, RATING, TIME, WRITERS, AIRDATE, PLAYCOUNT, LASTPLAYED, INPROGRESS, GENRE, YEAR, DIRECTOR, ACTOR, EPISODE, SEASON, FILENAME, PATH, STUDIO, MPAARATING, DATEADDED, TAG, VIDEORESOLUTION, AUDIOCHANNELS, VIDEOCODEC, AUDIOCODEC, AUDIOLANGUAGE, SUBTITLELANGUAGE, VIDEOASPECT, PLAYLIST, VIRTUALFOLDER));
 	}
 
 	/**
@@ -2781,10 +3012,11 @@ public final class ListModel {
 		public final String LASTPLAYED = "lastplayed";
 		public final String RATING = "rating";
 		public final String COMMENT = "comment";
+		public final String MOODS = "moods";
 		public final String PLAYLIST = "playlist";
 		public final String VIRTUALFOLDER = "virtualfolder";
 
-		public final static Set<String> values = new HashSet<String>(Arrays.asList(GENRE, ALBUM, ARTIST, ALBUMARTIST, TITLE, YEAR, TIME, TRACKNUMBER, FILENAME, PATH, PLAYCOUNT, LASTPLAYED, RATING, COMMENT, PLAYLIST, VIRTUALFOLDER));
+		public final static Set<String> values = new HashSet<String>(Arrays.asList(GENRE, ALBUM, ARTIST, ALBUMARTIST, TITLE, YEAR, TIME, TRACKNUMBER, FILENAME, PATH, PLAYCOUNT, LASTPLAYED, RATING, COMMENT, MOODS, PLAYLIST, VIRTUALFOLDER));
 	}
 
 	/**
@@ -2815,6 +3047,24 @@ public final class ListModel {
 		public final String VIRTUALFOLDER = "virtualfolder";
 
 		public final static Set<String> values = new HashSet<String>(Arrays.asList(TITLE, PLOT, STATUS, VOTES, RATING, YEAR, GENRE, DIRECTOR, ACTOR, NUMEPISODES, NUMWATCHED, PLAYCOUNT, PATH, STUDIO, MPAARATING, DATEADDED, LASTPLAYED, INPROGRESS, TAG, PLAYLIST, VIRTUALFOLDER));
+	}
+
+	/**
+	 * API Name: <tt>List.Filter.Fields.Textures</tt>
+	 */
+	public interface TextureFilterFields {
+
+		public final String TEXTUREID = "textureid";
+		public final String URL = "url";
+		public final String CACHEDURL = "cachedurl";
+		public final String LASTHASHCHECK = "lasthashcheck";
+		public final String IMAGEHASH = "imagehash";
+		public final String WIDTH = "width";
+		public final String HEIGHT = "height";
+		public final String USECOUNT = "usecount";
+		public final String LASTUSED = "lastused";
+
+		public final static Set<String> values = new HashSet<String>(Arrays.asList(TEXTUREID, URL, CACHEDURL, LASTHASHCHECK, IMAGEHASH, WIDTH, HEIGHT, USECOUNT, LASTUSED));
 	}
 
 	/**

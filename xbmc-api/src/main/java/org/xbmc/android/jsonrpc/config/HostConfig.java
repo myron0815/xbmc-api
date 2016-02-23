@@ -31,23 +31,23 @@ public class HostConfig {
 	/**
 	 * IP or host name of XBMC.
 	 */
-	public String mAddress;
+	public final String mAddress;
 	/**
 	 * HTTP port where JSON-RPC sits (defaults to 8080 on any platform but Windows, where it's 80).
 	 */
-	public int mHttpPort;
+	public final int mHttpPort;
 	/**
 	 * TCP port of JSON-RPC (defauls to 9090).
 	 */
-	public int mTcpPort;
+	public final int mTcpPort;
 	/**
 	 * Username, if authentication enabled.
 	 */
-	public String mUsername;
+	public final String mUsername;
 	/**
 	 * Password, if authentication enabled.
 	 */
-	public String mPassword;
+	public final String mPassword;
 	
 	/**
 	 * Creates a new XBMC host object.

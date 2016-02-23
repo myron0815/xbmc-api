@@ -34,6 +34,6 @@ public interface JsonSerializable {
 	 * Returns a JSON-serialized version of this object.
 	 * @return Deserialized Json Node
 	 */
-	public JsonNode toJsonNode();
+	public abstract JsonNode toJsonNode();
 
 }

@@ -117,24 +117,28 @@ public final class ApplicationModel {
 			public static final String MINOR = "minor";
 			public static final String REVISION = "revision";
 			public static final String TAG = "tag";
+			public static final String TAGVERSION = "tagversion";
 
 			// class members
 			public final Integer major;
 			public final Integer minor;
 			public final Revision revision;
 			public final String tag;
+			public final String tagversion;
 
 			/**
 			 * @param major
 			 * @param minor
 			 * @param revision
 			 * @param tag One of: <tt>prealpha</tt>, <tt>alpha</tt>, <tt>beta</tt>, <tt>releasecandidate</tt>, <tt>stable</tt>. See constants at {@link ApplicationModel.Version.Tag}.
+			 * @param tagversion
 			 */
-			public Version(Integer major, Integer minor, Revision revision, String tag) {
+			public Version(Integer major, Integer minor, Revision revision, String tag, String tagversion) {
 				this.major = major;
 				this.minor = minor;
 				this.revision = revision;
 				this.tag = tag;
+				this.tagversion = tagversion;
 			}
 
 			/**
@@ -146,6 +150,7 @@ public final class ApplicationModel {
 				minor = node.get(MINOR).getIntValue(); // required value
 				revision = node.has(REVISION) ? new Revision(node.get(REVISION)) : null;
 				tag = parseString(node, TAG);
+				tagversion = parseString(node, TAGVERSION);
 			}
 
 			@Override
@@ -155,6 +160,7 @@ public final class ApplicationModel {
 				node.put(MINOR, minor);
 				node.put(REVISION, revision.toJsonNode());
 				node.put(TAG, tag); // enum
+				node.put(TAGVERSION, tagversion);
 				return node;
 			}
 

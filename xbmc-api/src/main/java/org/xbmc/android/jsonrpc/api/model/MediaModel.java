@@ -32,7 +32,7 @@ public final class MediaModel {
 	/**
 	 * API Name: <tt>Media.Artwork</tt>
 	 * <p/>
-	 * Note: This class is used as parameter as well as result.<br/>
+	 * Note: This class is used as result only.<br/>
 	 * <i>This class was generated automatically from XBMC's JSON-RPC introspect.</i>
 	 */
 	public static class Artwork extends AbstractModel {
@@ -100,7 +100,51 @@ public final class MediaModel {
 			}
 			return new ArrayList<Artwork>(0);
 		}
+	}
 
+	/**
+	 * API Name: <tt>Media.Artwork.Set</tt>
+	 * <p/>
+	 * Note: This class is used as parameter only.<br/>
+	 * <i>This class was generated automatically from XBMC's JSON-RPC introspect.</i>
+	 */
+	public static class ArtworkSet extends AbstractModel {
+		public final static String API_TYPE = "Media.Artwork.Set";
+
+		// field names
+		public static final String BANNER = "banner";
+		public static final String FANART = "fanart";
+		public static final String POSTER = "poster";
+		public static final String THUMB = "thumb";
+
+		// class members
+		public final String banner;
+		public final String fanart;
+		public final String poster;
+		public final String thumb;
+
+		/**
+		 * @param banner
+		 * @param fanart
+		 * @param poster
+		 * @param thumb
+		 */
+		public ArtworkSet(String banner, String fanart, String poster, String thumb) {
+			this.banner = banner;
+			this.fanart = fanart;
+			this.poster = poster;
+			this.thumb = thumb;
+		}
+
+		@Override
+		public JsonNode toJsonNode() {
+			final ObjectNode node = OM.createObjectNode();
+			node.put(BANNER, banner);
+			node.put(FANART, fanart);
+			node.put(POSTER, poster);
+			node.put(THUMB, thumb);
+			return node;
+		}
 	}
 
 	/**

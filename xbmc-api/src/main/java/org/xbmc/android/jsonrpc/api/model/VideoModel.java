@@ -43,21 +43,25 @@ public final class VideoModel {
 
 		// field names
 		public static final String NAME = "name";
+		public static final String ORDER = "order";
 		public static final String ROLE = "role";
 		public static final String THUMBNAIL = "thumbnail";
 
 		// class members
 		public final String name;
+		public final Integer order;
 		public final String role;
 		public final String thumbnail;
 
 		/**
 		 * @param name
+		 * @param order
 		 * @param role
 		 * @param thumbnail
 		 */
-		public Cast(String name, String role, String thumbnail) {
+		public Cast(String name, Integer order, String role, String thumbnail) {
 			this.name = name;
+			this.order = order;
 			this.role = role;
 			this.thumbnail = thumbnail;
 		}
@@ -68,6 +72,7 @@ public final class VideoModel {
 		 */
 		public Cast(JsonNode node) {
 			name = node.get(NAME).getTextValue(); // required value
+			order = node.get(ORDER).getIntValue(); // required value
 			role = node.get(ROLE).getTextValue(); // required value
 			thumbnail = parseString(node, THUMBNAIL);
 		}
@@ -76,6 +81,7 @@ public final class VideoModel {
 		public JsonNode toJsonNode() {
 			final ObjectNode node = OM.createObjectNode();
 			node.put(NAME, name);
+			node.put(ORDER, order);
 			node.put(ROLE, role);
 			node.put(THUMBNAIL, thumbnail);
 			return node;
@@ -172,9 +178,13 @@ public final class VideoModel {
 		public static final String PRODUCTIONCODE = "productioncode";
 		public static final String RATING = "rating";
 		public static final String SEASON = "season";
+		public static final String SEASONID = "seasonid";
 		public static final String SHOWTITLE = "showtitle";
+		public static final String SPECIALSORTEPISODE = "specialsortepisode";
+		public static final String SPECIALSORTSEASON = "specialsortseason";
 		public static final String TVSHOWID = "tvshowid";
 		public static final String UNIQUEID = "uniqueid";
+		public static final String USERRATING = "userrating";
 		public static final String VOTES = "votes";
 		public static final String WRITER = "writer";
 
@@ -187,9 +197,13 @@ public final class VideoModel {
 		public final String productioncode;
 		public final Double rating;
 		public final Integer season;
+		public final Integer seasonid;
 		public final String showtitle;
+		public final Integer specialsortepisode;
+		public final Integer specialsortseason;
 		public final Integer tvshowid;
 		public final HashMap<String, String> uniqueid;
+		public final Integer userrating;
 		public final String votes;
 		public final List<String> writer;
 
@@ -207,9 +221,13 @@ public final class VideoModel {
 			productioncode = parseString(node, PRODUCTIONCODE);
 			rating = parseDouble(node, RATING);
 			season = parseInt(node, SEASON);
+			seasonid = parseInt(node, SEASONID);
 			showtitle = parseString(node, SHOWTITLE);
+			specialsortepisode = parseInt(node, SPECIALSORTEPISODE);
+			specialsortseason = parseInt(node, SPECIALSORTSEASON);
 			tvshowid = parseInt(node, TVSHOWID);
 			uniqueid = getStringMap(node, UNIQUEID);
+			userrating = parseInt(node, USERRATING);
 			votes = parseString(node, VOTES);
 			writer = getStringArray(node, WRITER);
 		}
@@ -229,13 +247,17 @@ public final class VideoModel {
 			node.put(PRODUCTIONCODE, productioncode);
 			node.put(RATING, rating);
 			node.put(SEASON, season);
+			node.put(SEASONID, seasonid);
 			node.put(SHOWTITLE, showtitle);
+			node.put(SPECIALSORTEPISODE, specialsortepisode);
+			node.put(SPECIALSORTSEASON, specialsortseason);
 			node.put(TVSHOWID, tvshowid);
 			final ObjectNode uniqueidMap = OM.createObjectNode();
 			for (String key : uniqueid.values()) {
 				uniqueidMap.put(key, uniqueid.get(key));
 			}
 			node.put(UNIQUEID, uniqueidMap);
+			node.put(USERRATING, userrating);
 			node.put(VOTES, votes);
 			final ArrayNode writerArray = OM.createArrayNode();
 			for (String item : writer) {
@@ -470,6 +492,7 @@ public final class VideoModel {
 		public static final String TAGLINE = "tagline";
 		public static final String TOP250 = "top250";
 		public static final String TRAILER = "trailer";
+		public static final String USERRATING = "userrating";
 		public static final String VOTES = "votes";
 		public static final String WRITER = "writer";
 		public static final String YEAR = "year";
@@ -493,6 +516,7 @@ public final class VideoModel {
 		public final String tagline;
 		public final Integer top250;
 		public final String trailer;
+		public final Integer userrating;
 		public final String votes;
 		public final List<String> writer;
 		public final Integer year;
@@ -521,6 +545,7 @@ public final class VideoModel {
 			tagline = parseString(node, TAGLINE);
 			top250 = parseInt(node, TOP250);
 			trailer = parseString(node, TRAILER);
+			userrating = parseInt(node, USERRATING);
 			votes = parseString(node, VOTES);
 			writer = getStringArray(node, WRITER);
 			year = parseInt(node, YEAR);
@@ -571,6 +596,7 @@ public final class VideoModel {
 			node.put(TAGLINE, tagline);
 			node.put(TOP250, top250);
 			node.put(TRAILER, trailer);
+			node.put(USERRATING, userrating);
 			node.put(VOTES, votes);
 			final ArrayNode writerArray = OM.createArrayNode();
 			for (String item : writer) {
@@ -610,9 +636,11 @@ public final class VideoModel {
 		public final static String API_TYPE = "Video.Details.MovieSet";
 
 		// field names
+		public static final String PLOT = "plot";
 		public static final String SETID = "setid";
 
 		// class members
+		public final String plot;
 		public final Integer setid;
 
 		/**
@@ -621,12 +649,14 @@ public final class VideoModel {
 		 */
 		public MovieSetDetail(JsonNode node) {
 			super(node);
+			plot = parseString(node, PLOT);
 			setid = parseInt(node, SETID);
 		}
 
 		@Override
 		public JsonNode toJsonNode() {
 			final ObjectNode node = (ObjectNode)super.toJsonNode();
+			node.put(PLOT, plot);
 			node.put(SETID, setid);
 			return node;
 		}
@@ -725,6 +755,7 @@ public final class VideoModel {
 		public static final String STUDIO = "studio";
 		public static final String TAG = "tag";
 		public static final String TRACK = "track";
+		public static final String USERRATING = "userrating";
 		public static final String YEAR = "year";
 
 		// class members
@@ -735,6 +766,7 @@ public final class VideoModel {
 		public final List<String> studio;
 		public final List<String> tag;
 		public final Integer track;
+		public final Integer userrating;
 		public final Integer year;
 
 		/**
@@ -750,6 +782,7 @@ public final class VideoModel {
 			studio = getStringArray(node, STUDIO);
 			tag = getStringArray(node, TAG);
 			track = parseInt(node, TRACK);
+			userrating = parseInt(node, USERRATING);
 			year = parseInt(node, YEAR);
 		}
 
@@ -779,6 +812,7 @@ public final class VideoModel {
 			}
 			node.put(TAG, tagArray);
 			node.put(TRACK, track);
+			node.put(USERRATING, userrating);
 			node.put(YEAR, year);
 			return node;
 		}
@@ -814,6 +848,7 @@ public final class VideoModel {
 		// field names
 		public static final String EPISODE = "episode";
 		public static final String SEASON = "season";
+		public static final String SEASONID = "seasonid";
 		public static final String SHOWTITLE = "showtitle";
 		public static final String TVSHOWID = "tvshowid";
 		public static final String WATCHEDEPISODES = "watchedepisodes";
@@ -821,6 +856,7 @@ public final class VideoModel {
 		// class members
 		public final Integer episode;
 		public final Integer season;
+		public final Integer seasonid;
 		public final String showtitle;
 		public final Integer tvshowid;
 		public final Integer watchedepisodes;
@@ -833,6 +869,7 @@ public final class VideoModel {
 			super(node);
 			episode = parseInt(node, EPISODE);
 			season = node.get(SEASON).getIntValue(); // required value
+			seasonid = parseInt(node, SEASONID);
 			showtitle = parseString(node, SHOWTITLE);
 			tvshowid = parseInt(node, TVSHOWID);
 			watchedepisodes = parseInt(node, WATCHEDEPISODES);
@@ -843,6 +880,7 @@ public final class VideoModel {
 			final ObjectNode node = (ObjectNode)super.toJsonNode();
 			node.put(EPISODE, episode);
 			node.put(SEASON, season);
+			node.put(SEASONID, seasonid);
 			node.put(SHOWTITLE, showtitle);
 			node.put(TVSHOWID, tvshowid);
 			node.put(WATCHEDEPISODES, watchedepisodes);
@@ -892,6 +930,7 @@ public final class VideoModel {
 		public static final String STUDIO = "studio";
 		public static final String TAG = "tag";
 		public static final String TVSHOWID = "tvshowid";
+		public static final String USERRATING = "userrating";
 		public static final String VOTES = "votes";
 		public static final String WATCHEDEPISODES = "watchedepisodes";
 		public static final String YEAR = "year";
@@ -911,6 +950,7 @@ public final class VideoModel {
 		public final List<String> studio;
 		public final List<String> tag;
 		public final Integer tvshowid;
+		public final Integer userrating;
 		public final String votes;
 		public final Integer watchedepisodes;
 		public final Integer year;
@@ -935,6 +975,7 @@ public final class VideoModel {
 			studio = getStringArray(node, STUDIO);
 			tag = getStringArray(node, TAG);
 			tvshowid = parseInt(node, TVSHOWID);
+			userrating = parseInt(node, USERRATING);
 			votes = parseString(node, VOTES);
 			watchedepisodes = parseInt(node, WATCHEDEPISODES);
 			year = parseInt(node, YEAR);
@@ -973,6 +1014,7 @@ public final class VideoModel {
 			}
 			node.put(TAG, tagArray);
 			node.put(TVSHOWID, tvshowid);
+			node.put(USERRATING, userrating);
 			node.put(VOTES, votes);
 			node.put(WATCHEDEPISODES, watchedepisodes);
 			node.put(YEAR, year);
@@ -1364,8 +1406,12 @@ public final class VideoModel {
 		public final String DATEADDED = "dateadded";
 		public final String UNIQUEID = "uniqueid";
 		public final String ART = "art";
+		public final String SPECIALSORTSEASON = "specialsortseason";
+		public final String SPECIALSORTEPISODE = "specialsortepisode";
+		public final String USERRATING = "userrating";
+		public final String SEASONID = "seasonid";
 
-		public final static Set<String> values = new HashSet<String>(Arrays.asList(TITLE, PLOT, VOTES, RATING, WRITER, FIRSTAIRED, PLAYCOUNT, RUNTIME, DIRECTOR, PRODUCTIONCODE, SEASON, EPISODE, ORIGINALTITLE, SHOWTITLE, CAST, STREAMDETAILS, LASTPLAYED, FANART, THUMBNAIL, FILE, RESUME, TVSHOWID, DATEADDED, UNIQUEID, ART));
+		public final static Set<String> values = new HashSet<String>(Arrays.asList(TITLE, PLOT, VOTES, RATING, WRITER, FIRSTAIRED, PLAYCOUNT, RUNTIME, DIRECTOR, PRODUCTIONCODE, SEASON, EPISODE, ORIGINALTITLE, SHOWTITLE, CAST, STREAMDETAILS, LASTPLAYED, FANART, THUMBNAIL, FILE, RESUME, TVSHOWID, DATEADDED, UNIQUEID, ART, SPECIALSORTSEASON, SPECIALSORTEPISODE, USERRATING, SEASONID));
 	}
 
 	/**
@@ -1406,8 +1452,9 @@ public final class VideoModel {
 		public final String DATEADDED = "dateadded";
 		public final String TAG = "tag";
 		public final String ART = "art";
+		public final String USERRATING = "userrating";
 
-		public final static Set<String> values = new HashSet<String>(Arrays.asList(TITLE, GENRE, YEAR, RATING, DIRECTOR, TRAILER, TAGLINE, PLOT, PLOTOUTLINE, ORIGINALTITLE, LASTPLAYED, PLAYCOUNT, WRITER, STUDIO, MPAA, CAST, COUNTRY, IMDBNUMBER, RUNTIME, SET, SHOWLINK, STREAMDETAILS, TOP250, VOTES, FANART, THUMBNAIL, FILE, SORTTITLE, RESUME, SETID, DATEADDED, TAG, ART));
+		public final static Set<String> values = new HashSet<String>(Arrays.asList(TITLE, GENRE, YEAR, RATING, DIRECTOR, TRAILER, TAGLINE, PLOT, PLOTOUTLINE, ORIGINALTITLE, LASTPLAYED, PLAYCOUNT, WRITER, STUDIO, MPAA, CAST, COUNTRY, IMDBNUMBER, RUNTIME, SET, SHOWLINK, STREAMDETAILS, TOP250, VOTES, FANART, THUMBNAIL, FILE, SORTTITLE, RESUME, SETID, DATEADDED, TAG, ART, USERRATING));
 	}
 
 	/**
@@ -1420,8 +1467,9 @@ public final class VideoModel {
 		public final String FANART = "fanart";
 		public final String THUMBNAIL = "thumbnail";
 		public final String ART = "art";
+		public final String PLOT = "plot";
 
-		public final static Set<String> values = new HashSet<String>(Arrays.asList(TITLE, PLAYCOUNT, FANART, THUMBNAIL, ART));
+		public final static Set<String> values = new HashSet<String>(Arrays.asList(TITLE, PLAYCOUNT, FANART, THUMBNAIL, ART, PLOT));
 	}
 
 	/**
@@ -1449,8 +1497,9 @@ public final class VideoModel {
 		public final String DATEADDED = "dateadded";
 		public final String TAG = "tag";
 		public final String ART = "art";
+		public final String USERRATING = "userrating";
 
-		public final static Set<String> values = new HashSet<String>(Arrays.asList(TITLE, PLAYCOUNT, RUNTIME, DIRECTOR, STUDIO, YEAR, PLOT, ALBUM, ARTIST, GENRE, TRACK, STREAMDETAILS, LASTPLAYED, FANART, THUMBNAIL, FILE, RESUME, DATEADDED, TAG, ART));
+		public final static Set<String> values = new HashSet<String>(Arrays.asList(TITLE, PLAYCOUNT, RUNTIME, DIRECTOR, STUDIO, YEAR, PLOT, ALBUM, ARTIST, GENRE, TRACK, STREAMDETAILS, LASTPLAYED, FANART, THUMBNAIL, FILE, RESUME, DATEADDED, TAG, ART, USERRATING));
 	}
 
 	/**
@@ -1501,7 +1550,8 @@ public final class VideoModel {
 		public final String DATEADDED = "dateadded";
 		public final String TAG = "tag";
 		public final String ART = "art";
+		public final String USERRATING = "userrating";
 
-		public final static Set<String> values = new HashSet<String>(Arrays.asList(TITLE, GENRE, YEAR, RATING, PLOT, STUDIO, MPAA, CAST, PLAYCOUNT, EPISODE, IMDBNUMBER, PREMIERED, VOTES, LASTPLAYED, FANART, THUMBNAIL, FILE, ORIGINALTITLE, SORTTITLE, EPISODEGUIDE, SEASON, WATCHEDEPISODES, DATEADDED, TAG, ART));
+		public final static Set<String> values = new HashSet<String>(Arrays.asList(TITLE, GENRE, YEAR, RATING, PLOT, STUDIO, MPAA, CAST, PLAYCOUNT, EPISODE, IMDBNUMBER, PREMIERED, VOTES, LASTPLAYED, FANART, THUMBNAIL, FILE, ORIGINALTITLE, SORTTITLE, EPISODEGUIDE, SEASON, WATCHEDEPISODES, DATEADDED, TAG, ART, USERRATING));
 	}
 }
